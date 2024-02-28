@@ -1,1 +1,174 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-body {
+    display: flex;
+    flex-grow: 2;
+}
+
+.content {
+    flex-grow: 1;
+    padding-left: 100px;
+    padding-top: 100px;
+    overflow-y: auto;
+    margin-left: 90px;
+    margin-top: 35px;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+.header p {
+    color: #666;
+    font-size: 1.2em;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chart-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.chart-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.chart-text {
+    margin-top: 10px;
+    text-align: center;
+    color: #666; 
+}
+
+.unique-users {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5em;
+}
+
+
+.table-container {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
+    border-radius: 4px;
+    background-color: #fff;
+    color: #212529;
+}
+
+.mat-table .mat-row:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.mat-table .mat-row:hover {
+    background-color: #e0e0e0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Adjust the number of columns as needed */
+    gap: 10px; /* Space between charts */
+}
+
+.file-input-button {
+    padding-top: 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.file-input-button:hover {
+    background-color: #45a049;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-input-label {
+    cursor: pointer;
+}
+
+.file-input {
+    display: block;
+    margin-top: 20px; /* Adjusted margin-top to 100px to move down the file input */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.table-container {
+    height: calc(100% - 53px);
+    min-height: 523px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
+    border-radius: 4px;
+    background-color: #fff;
+    color: #212529;
+}
+
+.header-with-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.filter-container {
+    // display: grid;
+    // grid-template-columns: repeat(12, 1fr);
+    gap: 0px;
+}
+
+.filter-container input {
+    // padding: 5px;
+    width: 100px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.filter-container input::placeholder {
+    color: #999;
+}
+

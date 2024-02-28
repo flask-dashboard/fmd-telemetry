@@ -1,0 +1,42 @@
+<div class="content">
+    <div class="header">
+        <h1>Telemetry Data Visualization</h1>
+        <p>Displaying telemetry data collected from the Flask Monitoring Dashboard.</p>
+    </div>
+
+    <div class="unique-users">
+        <h2>Unique Users Monitored: {{ uniqueUserCount }}</h2>
+    </div>
+
+    <div class="chart-grid">
+        <div class="chart-area">
+            <div #chartContainer1 class="chart-container"></div>
+            <p class="chart-text">Total amount of endpoints and blueprints</p>
+        </div>
+
+        <div class="chart-area">
+            <div #chartContainer4 class="chart-container"></div>
+            <p class="chart-text">Average amount of endpoints and blueprints per user</p>
+        </div>
+
+        <div class="chart-area">
+            <div #chartContainer2 class="chart-container"></div>
+            <p class="chart-text">Most used monitoring levels</p>
+        </div>
+
+        <div class="chart-area">
+            <div #chartContainer5 class="chart-container"></div>
+            <p class="chart-text">Average amount of monitoring levels</p>
+        </div>
+
+        <div class="chart-area">
+            <div #chartContainer3 class="chart-container"></div>
+            <p class="chart-text">Top 10 most visited routes. </p>
+        </div>
+
+        <div class="chart-area">
+            <div #chartContainer6 class="chart-container"></div>
+            <p class="chart-text">Session Frequency Over Time</p>
+        </div>
+    </div>
+</div>

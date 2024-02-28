@@ -1,0 +1,273 @@
+<div class="content">
+
+    <div class="header">
+        <h1>Telemetry Data</h1>
+        <p>Upload newest telemetry data from ...</p>
+    </div>
+
+    <label class="file-input-label">
+        <input type="file" (change)="onFileSelected($event)" multiple>
+        <span class="file-input-button">Select Files</span>
+    </label>
+
+
+
+    <mat-tab-group>
+        <mat-tab label="User Sessions">
+            <div class="table-container mat-elevation-z8">
+                <table mat-table [dataSource]="userSessionDataSource" #sortUserSession="matSort" matSort
+                    class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="objectId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Object ID</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'objectId')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.objectId}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title"> Created At</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'createdAt')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.createdAt | date: 'short'}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="updatedAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Updated At</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'updatedAt')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.updatedAt | date: 'short'}} </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="fmd_id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">FMD ID</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'fmd_id')" placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.fmd_id}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="session">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Session</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'session')" placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.session}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="endpoints">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Endpoints</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'endpoints')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.endpoints}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="blueprints">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Blueprints</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'blueprints')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.blueprints}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="monitoring_0">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Monitoring 0</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'monitoring_0')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.monitoring_0}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="monitoring_1">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Monitoring 1</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'monitoring_1')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.monitoring_1}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="monitoring_2">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">
+                                    Monitoring 2</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'monitoring_2')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.monitoring_2}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="monitoring_3">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Monitoring 3</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'monitoring_3')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.monitoring_3}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="time_initialized">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Time Initialized</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyUserSessionFilter($event, 'time_initialized')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let session"> {{session.time_initialized}} </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="userSessionDisplayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let session; columns: userSessionDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Endpoints">
+            <div class="table-container mat-elevation-z8">
+                <table mat-table [dataSource]="endpointsDataSource" #sortEndpoints="matSort" matSort
+                    class="mat-elevation-z8">
+                    <ng-container matColumnDef="objectId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title"> Object ID</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyEndpointsFilter($event, 'objectId')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let endpoint"> {{endpoint.objectId}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title"> Created At</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyEndpointsFilter($event, 'createdAt')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let endpoint"> {{endpoint.createdAt | date}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="updatedAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Updated At </div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyEndpointsFilter($event, 'updatedAt')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let endpoint"> {{endpoint.updatedAt | date}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Name</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyEndpointsFilter($event, 'name')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let endpoint"> {{endpoint.name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fmd_id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title"> FMD ID</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyEndpointsFilter($event, 'fmd_id')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let endpoint"> {{endpoint.fmd_id}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="session">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <div class="header-with-filter">
+                                <div class="header-title">Session</div>
+                                <div class="filter-container">
+                                    <input matInput (keyup)="applyEndpointsFilter($event, 'session')"
+                                        placeholder=" ">
+                                </div>
+                            </div>
+                        </th>
+                        <td mat-cell *matCellDef="let endpoint"> {{endpoint.session}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="endpointsDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: endpointsDisplayedColumns;"></tr>
+
+                </table>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

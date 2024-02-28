@@ -1,0 +1,34 @@
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100px;
+  background-color: #343a40;
+  padding-top: 58px;
+  z-index: 999;
+}
+
+.sidenav a {
+  padding: 16px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+}
+
+.sidenav .nav-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  /* Adjust padding as needed */
+}
+
+.sidenav .nav-item i {
+  color: white;
+}
+
+.sidenav .nav-item:hover {
+  background-color: #ddd;
+  color: black;
+}

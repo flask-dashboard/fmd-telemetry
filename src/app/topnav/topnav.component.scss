@@ -1,0 +1,21 @@
+.topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #212529;
+    color: white;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+}
+
+
+.topnav .text {
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+  
