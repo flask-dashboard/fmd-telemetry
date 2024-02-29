@@ -119,13 +119,7 @@ export class DataComponent implements OnInit {
 
   applyEndpointsFilter(event: Event, column: string) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-
-    if (column === 'createdAt' || column === 'updatedAt') {
-      this.activeEndpointsFilters[column] = this.convertDateToDisplayFormat(filterValue);
-    } else {
-      this.activeEndpointsFilters[column] = filterValue;
-    }
-  
+    this.activeEndpointsFilters[column] = filterValue;
     this.triggerFilterUpdate(this.endpointsDataSource, this.activeEndpointsFilters);
   }
 
@@ -156,7 +150,9 @@ export class DataComponent implements OnInit {
     }).toLowerCase();
   }
 
-  
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
 
 
 
