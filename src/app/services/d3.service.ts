@@ -190,18 +190,12 @@ export class D3Service {
         .text(config.yLabel);
     }
 
-
-    console.log("X Scale Domain: ", x.domain());
-    console.log("Y Scale Domain: ", y.domain());
-
     // Define the line
   const valueline = d3.line<SessionData>()
     .x(d => {
-      console.log("Date for line: ", d.date); // Debugging: Log each date
       return x(d.date);
     })
     .y(d => {
-      console.log("Count for line: ", d.count); // Debugging: Log each count
       return y(d.count);
     });
 
