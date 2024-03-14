@@ -263,9 +263,11 @@ export class StatsComponent implements OnInit {
 
   private groupSessionsByDate() {
     const sessionCountsByDate: { [key: string]: number } = {};
-
+    const processedFmdIds = new Set<string>();
+  
     this.userData.forEach(session => {
-      if (session.createdAt) {
+      if (session.createdAt && !processedFmdIds.has(session.fmd_id)) {
+        processedFmdIds.add(session.fmd_id);
         const date = new Date(session.createdAt);
         if (!isNaN(date.getTime())) {
           const formattedDate = date.toLocaleDateString('en-CA');
@@ -277,7 +279,7 @@ export class StatsComponent implements OnInit {
         }
       }
     });
-
+  
     // Convert to array and sort by date
     const transformedData = Object.keys(sessionCountsByDate)
       .sort()
@@ -285,10 +287,10 @@ export class StatsComponent implements OnInit {
         date: date, // Use the formatted date string directly
         count: sessionCountsByDate[date]
       }));
-
-    console.log('Transformed Session Data:', transformedData);
     return transformedData;
   }
+  
+  
 
 
 
