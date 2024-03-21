@@ -3,7 +3,10 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - master  
+      - master
+    paths:
+      - '**/*'
+      - '.github/workflows/static.yml'
 
 jobs:
   build-and-deploy:
