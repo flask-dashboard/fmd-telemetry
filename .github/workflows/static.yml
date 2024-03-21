@@ -43,7 +43,7 @@ jobs:
       # Build
       - name: Build Angular app
         working-directory: ./fmd-telemetry
-        run: ng build
+        run: ng build -base-href /fmd-telemetry/
       - name: List output directory
         run: ls -l fmd-telemetry/dist/
                 
