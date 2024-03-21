@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -16,9 +16,6 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,24 +39,16 @@ jobs:
 
       # Build
       - name: Build Angular app
-        working-directory: ./fmd-telemetry
         run: ng build --base-href /fmd-telemetry/
+        working-directory: ./fmd-telemetry
+
+      # List output directory
       - name: List output directory
         run: ls -l fmd-telemetry/dist/
-                
-      # Setup Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      # Upload artifact
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'fmd-telemetry/dist/fmd-telemetry'
-    
 
-      # Deploy to GitHub Pages
+      # Deploy to gh-pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: fmd-telemetry/dist/fmd-telemetry # The folder the action should deploy.
