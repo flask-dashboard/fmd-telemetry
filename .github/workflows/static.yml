@@ -53,10 +53,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
-      # Change to Angular project directory
-      - name: Change directory
-        run: cd ..
-        
       # Upload artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -67,3 +63,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
