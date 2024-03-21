@@ -47,8 +47,8 @@ jobs:
 
       # Build the Angular project
       - name: Build Angular app
-        run: ng build --configuration production --base-href "/fmd-telemetry/"
-
+        run: ng build
+        
       # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/fmd-telemetry'
+          path: './dist/fmd-telemetry/browser'
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
