@@ -49,6 +49,10 @@ jobs:
         working-directory: ./fmd-telemetry
         run: ng build
         
+      # Change to Angular project directory
+      - name: Change directory
+        run: cd ..
+
       # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
