@@ -53,6 +53,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # Change back directory
+      - name: Change directory
+        run: cd ..
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
