@@ -48,6 +48,9 @@ jobs:
       - name: Build Angular app
         working-directory: ./fmd-telemetry
         run: ng build
+      - name: List output directory
+        run: ls -l dist/
+
                 
       # Setup Pages
       - name: Setup Pages
