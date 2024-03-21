@@ -30,10 +30,6 @@ jobs:
         with:
           node-version: '20'
 
-      # Change to Angular project directory
-      - name: Change directory
-        run: cd fmd-telemetry
-
       # Install dependencies
       - name: Install Dependencies
         run: npm install
@@ -59,7 +55,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/fmd-telemetry'
+          path: 'fmd-telemetry/dist/fmd-telemetry'
+    
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
