@@ -48,15 +48,15 @@ jobs:
       - name: Build Angular app
         working-directory: ./fmd-telemetry
         run: ng build
+                
+      # Setup Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
         
       # Change to Angular project directory
       - name: Change directory
         run: cd ..
-
-      # Setup Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
+        
       # Upload artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
