@@ -53,12 +53,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # Change back directory
-      - name: Change directory
-        run: cd ..
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+      # Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: fmd-telemetry/dist/fmd-telemetry
+          path: './dist/fmd-telemetry'
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
