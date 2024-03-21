@@ -44,13 +44,12 @@ jobs:
         run: npm install -g @angular/cli
         working-directory: ./fmd-telemetry
 
-      # Build the Angular project
+      # Build
       - name: Build Angular app
         working-directory: ./fmd-telemetry
         run: ng build
       - name: List output directory
-        run: ls -l dist/
-
+        run: ls -l fmd-telemetry/dist/
                 
       # Setup Pages
       - name: Setup Pages
