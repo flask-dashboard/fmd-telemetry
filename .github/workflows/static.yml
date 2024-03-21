@@ -47,7 +47,7 @@ jobs:
 
       # Build the Angular project
       - name: Build Angular app
-        run: ng build --base-href=/fmd-telemetry/browser/
+        run: ng build --base-href=/
         
       # Setup Pages
       - name: Setup Pages
