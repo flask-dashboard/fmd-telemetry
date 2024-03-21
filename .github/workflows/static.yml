@@ -3,19 +3,19 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - master  
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3 
 
     - name: Install Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3 
       with:
-        node-version: '18'
+        node-version: '20' 
 
     - name: Install Angular CLI
       run: npm install -g @angular/cli
@@ -26,9 +26,8 @@ jobs:
     - name: Build Angular app
       run: ng build --configuration production --base-href "/fmd-telemetry/"
 
-
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        branch: gh-pages
-        folder: dist/fmd-telemetry 
+        branch: gh-pages  
+        folder: dist/fmd-telemetry
