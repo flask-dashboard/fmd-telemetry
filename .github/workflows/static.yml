@@ -22,7 +22,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -42,20 +41,25 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      # Install Angular CLI
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
       # Build the Angular project
       - name: Build Angular app
         run: ng build --configuration production --base-href "/fmd-telemetry/"
 
-
+      # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # Upload artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload built Angular project
           path: './dist/fmd-telemetry'
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
