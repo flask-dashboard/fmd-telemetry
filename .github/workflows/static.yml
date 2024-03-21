@@ -47,8 +47,8 @@ jobs:
 
       # Build the Angular project
       - name: Build Angular app
-        run: ng build --configuration production --base-href "/fmd-telemetry/"
-
+        run: ng build
+        
       # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
