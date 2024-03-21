@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/fmd-telemetry'
+          path: './dist/fmd-telemetry/browser'
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
