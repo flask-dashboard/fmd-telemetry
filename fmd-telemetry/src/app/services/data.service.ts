@@ -11,10 +11,10 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getUserSession(): Observable<UserSession[]> {
-    return this.http.get<UserSession[]>('/assets/UserSession.json');
+    return this.http.get<UserSession[]>('assets/UserSession.json');
   }
 
   getEndpoints(): Observable<Endpoints[]> {
-    return this.http.get<Endpoints[]>('/assets/Endpoints.json');
+    return this.http.get<Endpoints[]>('assets/Endpoints.json');
   }
 }
