@@ -67,7 +67,6 @@ export class DataComponent implements OnInit {
     }
   }
 
-
   loadData() {
     this.dataService.getUserSession().subscribe(data => {
       this.userSessionDataSource.data = data;
@@ -76,39 +75,6 @@ export class DataComponent implements OnInit {
     this.dataService.getEndpoints().subscribe(data => {
       this.endpointsDataSource.data = data;
     });
-  }
-
-
-
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) return;
-
-    for (let i = 0; i < input.files.length; i++) {
-      const file = input.files[i];
-      const fileReader = new FileReader();
-      fileReader.readAsText(file, 'UTF-8');
-
-      fileReader.onload = () => {
-        if (typeof fileReader.result === 'string') {
-          try {
-            const data = JSON.parse(fileReader.result);
-            if (file.name.includes("UserSession")) {
-              this.dataService.updateUserSessions(data);
-            } else if (file.name.includes("Endpoints")) {
-              this.dataService.updateEndpoints(data);
-            }
-            this.loadData(); // Refresh data sources
-          } catch (error) {
-            console.error('Error parsing JSON file:', error);
-          }
-        }
-      };
-
-      fileReader.onerror = (error) => {
-        console.error('Error reading file:', error);
-      };
-    }
   }
 
   applyUserSessionFilter(event: Event, column: string) {

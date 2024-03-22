@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { UserSession } from '../model/userSession.model'; 
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserSession } from '../model/userSession.model';
 import { Endpoints } from '../model/endpoints.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private userSessions: UserSession[] = []; // Initial empty array
-  private endpoints: Endpoints[] = []; // Initial empty array
-  
-  constructor() { }
-
-  updateUserSessions(data: UserSession[]) {
-    this.userSessions = data;
-  }
-
-  updateEndpoints(data: Endpoints[]) {
-    this.endpoints = data;
-  }
+  constructor(private http: HttpClient) { }
 
   getUserSession(): Observable<UserSession[]> {
-    return of(this.userSessions);
+    return this.http.get<UserSession[]>('/assets/UserSession.json');
   }
 
   getEndpoints(): Observable<Endpoints[]> {
-    return of(this.endpoints);
+    return this.http.get<Endpoints[]>('/assets/Endpoints.json');
   }
 }

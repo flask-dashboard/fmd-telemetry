@@ -34,7 +34,10 @@ export class StatsComponent implements OnInit {
   @ViewChild('chartContainer6') private chartContainer6!: ElementRef;
   // Define more if needed
 
+  private userSessionsLoaded = false;
+  private endpointsLoaded = false;
   private isDataLoaded = false;
+
   private userData: UserSession[] = [];
   private endpointData: Endpoints[] = [];
   private endpointVisitCounts: { category: string; value: number; }[] = [];
@@ -52,25 +55,50 @@ export class StatsComponent implements OnInit {
     this.fetchEndpoints();
   }
 
-  ngAfterViewInit() {
-    this.setupCharts();
-  }
-
-
-
   private fetchUserSessions() {
     this.dataService.getUserSession().subscribe({
       next: (data: UserSession[]) => {
         this.userSessionDataSource.data = data;
         this.userData = data;
         this.calculateUniqueUsers();
-        this.isDataLoaded = true;
+        this.userSessionsLoaded = true;
+        this.checkDataLoaded();
       },
       error: (error: any) => {
         console.error('Error fetching user session data', error);
       }
     });
   }
+
+  private fetchEndpoints() {
+    this.dataService.getEndpoints().subscribe({
+      next: (data: Endpoints[]) => {
+        this.endpointsDataSource.data = data;
+        this.endpointData = data;
+        this.processEndpointVisitsData(data);
+        this.endpointsLoaded = true;
+        this.checkDataLoaded();
+      },
+      error: (error: any) => {
+        console.error('Error fetching endpoints data', error);
+      }
+    });
+  }
+
+  private checkDataLoaded() {
+    if (this.userSessionsLoaded && this.endpointsLoaded) {
+      this.isDataLoaded = true;
+      this.setupCharts();
+    }
+  }
+
+  ngAfterViewInit() {
+    this.setupCharts();
+  }
+
+
+
+
 
   private setupCharts() {
     if (this.isDataLoaded) {
@@ -111,26 +139,7 @@ export class StatsComponent implements OnInit {
       });
     }
   }
-  
 
-  private fetchEndpoints() {
-    this.dataService.getEndpoints().subscribe({
-      next: (data: Endpoints[]) => {
-        this.processEndpointVisitsData(data);
-        if (this.isDataLoaded) {
-          this.createChart(this.chartContainer3, this.endpointData, {
-            width: 600,
-            height: 400,
-            title: 'Endpoint Visits',
-            yLabel: 'Visits Count'
-          });
-        }
-      },
-      error: (error: any) => {
-        console.error('Error fetching endpoints data', error);
-      }
-    });
-  }
 
   private calculateUniqueUsers() {
     const uniqueFmdIds = new Set(this.userData.map(session => session.fmd_id));
