@@ -133,7 +133,7 @@ export class StatsComponent implements OnInit {
       });
   
       this.createLineChart(this.chartContainer6, this.groupSessionsByDate(), {
-        title: 'Session Frequency Over Time',
+        title: 'App Initializations Over Time',
         xLabel: 'Date',
         yLabel: 'Number of Sessions'
       });
@@ -255,12 +255,15 @@ export class StatsComponent implements OnInit {
 
 
   private processEndpointVisitsData(data: Endpoints[]) {
-    const visitCounts = data.reduce((acc: EndpointCounts, endpoint) => {
-      // Replace digits and the word "None" with '*'w
-      const normalizedEndpoint = endpoint.name.replace(/\d+|None/g, '*');
-      acc[normalizedEndpoint] = (acc[normalizedEndpoint] || 0) + 1;
-      return acc;
-    }, {} as EndpointCounts);
+    const excludedEndpoints = ['users', 'deploy_details', 'deploy_config'];
+    const visitCounts = data
+      .filter(endpoint => !excludedEndpoints.includes(endpoint.name))
+      .reduce((acc: EndpointCounts, endpoint) => {
+        // Replace digits and the word "None" with '*'
+        const normalizedEndpoint = endpoint.name.replace(/\d+|None/g, '*');
+        acc[normalizedEndpoint] = (acc[normalizedEndpoint] || 0) + 1;
+        return acc;
+      }, {} as EndpointCounts);
 
     // Convert to array, sort by value in descending order, and take the top 10
     this.endpointVisitCounts = Object.keys(visitCounts)
