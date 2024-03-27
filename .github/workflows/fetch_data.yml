@@ -3,6 +3,7 @@ name: Fetch MongoDB Data
 on:
   schedule:
     - cron: '0 0 * * 0' # This sets it to run weekly on Sunday at midnight
+  workflow_dispatch: # Manual trigger
 
 jobs:
   fetch_data:
