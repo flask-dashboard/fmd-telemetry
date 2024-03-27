@@ -25,7 +25,7 @@ def fetch_and_save(collection_name, file_path):
         file.write(JSONEncoder().encode(data))
 
 # Fetch and save FMD.Endpoints
-fetch_and_save("Endpoints", 'fmd-telemetry/fmd-telemetry/src/assets/Endpoints.json')
+fetch_and_save("Endpoints", 'fmd-telemetry/src/assets/Endpoints.json')
 
 # Fetch and save FMD.UserSession
-fetch_and_save("UserSession", 'fmd-telemetry/fmd-telemetry/src/assets/UserSession.json')
+fetch_and_save("UserSession", 'fmd-telemetry/src/assets/UserSession.json')
