@@ -1,0 +1,37 @@
+name: Fetch MongoDB Data
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # This sets it to run weekly on Sunday at midnight
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install MongoDB client
+        run: |
+          python -m pip install --upgrade pip
+          pip install pymongo
+
+      - name: Fetch Data from MongoDB
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: |
+          python fetch_data.py
+
+      # Commit and Push changes
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Update data files" || true
+          git push origin gh-pages
