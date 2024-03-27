@@ -2,12 +2,15 @@ from pymongo import MongoClient
 import json
 import os
 from bson import ObjectId
+from datetime import datetime
 
-# JSON Encoder for handling MongoDB ObjectId
+# Custom JSON Encoder for handling MongoDB ObjectId and datetime objects
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
             return str(o)
+        if isinstance(o, datetime):
+            return o.isoformat()
         return json.JSONEncoder.default(self, o)
 
 # Connect to MongoDB
