@@ -44,11 +44,6 @@ export class DataComponent implements OnInit {
       for (const key in this.activeEndpointsFilters) {
         if (this.activeEndpointsFilters[key]) {
           let searchValue = data[key as keyof Endpoints]?.toString().toLowerCase() || '';
-          
-          if (key === '_created_at' || key === '_updated_at') {
-            searchValue = this.convertDateToDisplayFormat(searchValue);
-          }
-    
           if (!searchValue.includes(this.activeEndpointsFilters[key])) {
             return false;
           }
@@ -106,11 +101,6 @@ export class DataComponent implements OnInit {
     dataSource.filter = 'update';
   }
 
-
-  convertDateToDisplayFormat(dateStr: string): string {
-    if (!dateStr) return '';
-    return dateStr;
-  }
   
 
   stopPropagation(event: Event) {
