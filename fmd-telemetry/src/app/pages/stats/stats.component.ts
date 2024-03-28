@@ -251,9 +251,6 @@ export class StatsComponent implements OnInit {
     });
   }
 
-
-
-
   private processEndpointVisitsData(data: Endpoints[]) {
     const excludedEndpoints = ['users', 'deploy_details', 'deploy_config'];
     const visitCounts = data
@@ -278,11 +275,13 @@ export class StatsComponent implements OnInit {
     const processedFmdIds = new Set<string>();
   
     this.userData.forEach(session => {
-      if (session.createdAt && !processedFmdIds.has(session.fmd_id)) {
+      if (session._created_at && !processedFmdIds.has(session.fmd_id)) {
         processedFmdIds.add(session.fmd_id);
-        const date = new Date(session.createdAt);
+        // Parse the date considering the new format
+        const date = new Date(session._created_at.$date);
         if (!isNaN(date.getTime())) {
-          const formattedDate = date.toLocaleDateString('en-CA');
+          // Format the date as 'yyyy-mm-dd'
+          const formattedDate = date.toISOString().split('T')[0];
           if (sessionCountsByDate[formattedDate]) {
             sessionCountsByDate[formattedDate] += session.session;
           } else {
@@ -301,6 +300,7 @@ export class StatsComponent implements OnInit {
       }));
     return transformedData;
   }
+  
   
   
 

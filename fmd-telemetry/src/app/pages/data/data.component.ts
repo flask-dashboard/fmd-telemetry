@@ -4,6 +4,7 @@ import { UserSession } from '../../model/userSession.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Endpoints } from '../../model/endpoints.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-data',
@@ -11,10 +12,10 @@ import { Endpoints } from '../../model/endpoints.model';
   styleUrls: ['./data.component.scss']
 })
 export class DataComponent implements OnInit {
-  userSessionDisplayedColumns: string[] = ['objectId', 'createdAt', 'updatedAt', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'time_initialized'];
+  userSessionDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'time_initialized'];
   userSessionDataSource = new MatTableDataSource<UserSession>();
 
-  endpointsDisplayedColumns: string[] = ['objectId', 'createdAt', 'updatedAt', 'name', 'fmd_id', 'session'];
+  endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];
   endpointsDataSource = new MatTableDataSource<Endpoints>();
   @ViewChild('sortUserSession') sortUserSession?: MatSort;
   @ViewChild('sortEndpoints') sortEndpoints?: MatSort;
@@ -44,7 +45,7 @@ export class DataComponent implements OnInit {
         if (this.activeEndpointsFilters[key]) {
           let searchValue = data[key as keyof Endpoints]?.toString().toLowerCase() || '';
           
-          if (key === 'createdAt' || key === 'updatedAt') {
+          if (key === '_created_at' || key === '_updated_at') {
             searchValue = this.convertDateToDisplayFormat(searchValue);
           }
     
@@ -108,17 +109,14 @@ export class DataComponent implements OnInit {
 
   convertDateToDisplayFormat(dateStr: string): string {
     if (!dateStr) return '';
-    const date = new Date(dateStr);
-    return isNaN(date.getTime()) ? '' : date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    }).toLowerCase();
+    return dateStr;
   }
+  
 
   stopPropagation(event: Event) {
     event.stopPropagation();
   }
+  
 
 
 

@@ -1,7 +1,7 @@
 export interface UserSession {
-    objectId: string;
-    createdAt: Date;
-    updatedAt: Date;
+    _id: string;
+    _created_at: { $date: string };
+    _updated_at: { $date: string };
     ACL: any;
     fmd_id: string;
     session: number;
