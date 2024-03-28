@@ -25,30 +25,26 @@ interface EndpointCounts {
   styleUrl: './stats.component.scss',
 })
 export class StatsComponent implements OnInit {
-  // stats.component.ts
   @ViewChild('chartContainer1') private chartContainer1!: ElementRef;
   @ViewChild('chartContainer2') private chartContainer2!: ElementRef;
   @ViewChild('chartContainer3') private chartContainer3!: ElementRef;
   @ViewChild('chartContainer4') private chartContainer4!: ElementRef;
   @ViewChild('chartContainer5') private chartContainer5!: ElementRef;
   @ViewChild('chartContainer6') private chartContainer6!: ElementRef;
-  // Define more if needed
+  @ViewChild('chartContainer7') private chartContainer7!: ElementRef;
 
   private userSessionsLoaded = false;
   private endpointsLoaded = false;
-  private isDataLoaded = false;
-
   private userData: UserSession[] = [];
   private endpointData: Endpoints[] = [];
-  private endpointVisitCounts: { category: string; value: number; }[] = [];
+  private endpointVisitCounts: Array<{ category: string; value: number }> = [];
+  private isDataLoaded = false;
 
-  uniqueUserCount: number = 0;
-
-
-
-  constructor(private dataService: DataService, private d3Service: D3Service) { }
+  uniqueUserCount = 0;
   userSessionDataSource = new MatTableDataSource<UserSession>();
   endpointsDataSource = new MatTableDataSource<Endpoints>();
+
+  constructor(private dataService: DataService, private d3Service: D3Service) { }
 
   ngOnInit() {
     this.fetchUserSessions();
@@ -96,10 +92,6 @@ export class StatsComponent implements OnInit {
     this.setupCharts();
   }
 
-
-
-
-
   private setupCharts() {
     if (this.isDataLoaded) {
       this.createChart(this.chartContainer1, this.aggregateEndpointsAndBlueprints(this.userData), {
@@ -107,37 +99,67 @@ export class StatsComponent implements OnInit {
         xLabel: 'Category',
         yLabel: 'Total Count'
       });
-  
+
       this.createChart(this.chartContainer2, this.aggregateMonitoringLevels(this.userData), {
         title: 'Monitoring Level Distribution',
         xLabel: 'Monitoring Level',
         yLabel: 'Count'
       });
-  
+
       this.createChart(this.chartContainer5, this.calculateAverageMonitoringLevels(), {
         title: 'Average Monitoring Levels',
         xLabel: 'Monitoring Level',
         yLabel: 'Average Count'
       });
-  
+
       this.createChart(this.chartContainer3, this.endpointVisitCounts, {
         title: 'Route Visits',
         xLabel: 'Routes',
         yLabel: 'Visit Count'
       });
-  
+
       this.createChart(this.chartContainer4, this.calculateAverageEndpointsAndBlueprints(), {
         title: 'Average Endpoints and Blueprints',
         xLabel: 'Category',
         yLabel: 'Average Count'
       });
-  
+
+      this.createChart(this.chartContainer7, this.aggregateUsageByWeekday(), {
+        title: 'Weekly Usage',
+        xLabel: 'Day of the Week',
+        yLabel: 'Sessions Count',
+        xField: 'day',
+        yField: 'count'
+      });
+
       this.createLineChart(this.chartContainer6, this.groupSessionsByDate(), {
         title: 'App Initializations Over Time',
         xLabel: 'Date',
         yLabel: 'Number of Sessions'
       });
     }
+  }
+
+  private createChart(container: ElementRef, data: any[], config: any) {
+    this.d3Service.createBarChart(container.nativeElement, data, {
+      width: config.width || 600,
+      height: config.height || 400,
+      title: config.title,
+      xLabel: config.xLabel,
+      yLabel: config.yLabel,
+      xField: config.xField || 'category',
+      yField: config.yField || 'value'
+    });
+  }
+
+  private createLineChart(container: ElementRef, data: any[], config: any) {
+    this.d3Service.createLineChart(container.nativeElement, data, {
+      width: config.width || 600,
+      height: config.height || 400,
+      title: config.title,
+      xLabel: config.xLabel,
+      yLabel: config.yLabel
+    });
   }
 
 
@@ -229,28 +251,6 @@ export class StatsComponent implements OnInit {
     ];
   }
 
-
-
-  private createChart(container: ElementRef, data: any[], config: any) {
-    this.d3Service.createBarChart(container.nativeElement, data, {
-      width: config.width || 600,
-      height: config.height || 400,
-      title: config.title,
-      xLabel: config.xLabel,
-      yLabel: config.yLabel
-    });
-  }
-
-  private createLineChart(container: ElementRef, data: any[], config: any) {
-    this.d3Service.createLineChart(container.nativeElement, data, {
-      width: config.width || 600,
-      height: config.height || 400,
-      title: config.title,
-      xLabel: config.xLabel,
-      yLabel: config.yLabel
-    });
-  }
-
   private processEndpointVisitsData(data: Endpoints[]) {
     const excludedEndpoints = ['users', 'deploy_details', 'deploy_config'];
     const visitCounts = data
@@ -269,40 +269,68 @@ export class StatsComponent implements OnInit {
       .slice(0, 10);
   }
 
+  private aggregateUsageByWeekday() {
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let weekdayCounts: { [key: string]: number } = {};
 
-  private groupSessionsByDate() {
-    const sessionCountsByDate: { [key: string]: number } = {};
-    const processedFmdIds = new Set<string>();
-  
+    weekdays.forEach(day => { weekdayCounts[day] = 0; });
+
     this.userData.forEach(session => {
-      if (session._created_at && !processedFmdIds.has(session.fmd_id)) {
-        processedFmdIds.add(session.fmd_id);
-        // Parse the date considering the new format
-        const date = new Date(session._created_at.$date);
-        if (!isNaN(date.getTime())) {
-          // Format the date as 'yyyy-mm-dd'
-          const formattedDate = date.toISOString().split('T')[0];
-          if (sessionCountsByDate[formattedDate]) {
-            sessionCountsByDate[formattedDate] += session.session;
-          } else {
-            sessionCountsByDate[formattedDate] = session.session;
-          }
-        }
+      // Extract the date string
+      const dateString = this.extractDateString(session._created_at);
+
+      if (dateString) {
+        // Create the Date object using the extracted date string
+        let dayOfWeek = new Date(dateString).getDay();
+        let weekday = weekdays[dayOfWeek];
+        weekdayCounts[weekday] += 1;
       }
     });
-  
-    // Convert to array and sort by date
-    const transformedData = Object.keys(sessionCountsByDate)
+
+    return Object.keys(weekdayCounts).map(day => ({ day, count: weekdayCounts[day] }));
+}
+
+
+
+
+  private groupSessionsByDate() {
+    const sessionCountsByDate: { [key: string]: Set<string> } = {};
+
+    this.userData.forEach(session => {
+      const dateString = this.extractDateString(session._created_at);
+      if (dateString) {
+        const formattedDate = this.formatDate(dateString);
+        sessionCountsByDate[formattedDate] = sessionCountsByDate[formattedDate] || new Set();
+        sessionCountsByDate[formattedDate].add(session.fmd_id);
+      }
+    });
+
+    return this.transformData(sessionCountsByDate);
+  }
+
+  private extractDateString(created_at: any): string | null {
+    if (created_at && created_at.$date) {
+      return created_at.$date;
+    } else if (typeof created_at === 'string') {
+      return created_at;
+    }
+    return null;
+  }
+
+  private formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return !isNaN(date.getTime()) ? date.toISOString().split('T')[0] : '';
+  }
+
+  private transformData(sessionCountsByDate: { [key: string]: Set<string> }): any[] {
+    return Object.keys(sessionCountsByDate)
       .sort()
       .map(date => ({
-        date: date, // Use the formatted date string directly
-        count: sessionCountsByDate[date]
+        date,
+        count: sessionCountsByDate[date].size
       }));
-    return transformedData;
   }
-  
-  
-  
+
 
 
 

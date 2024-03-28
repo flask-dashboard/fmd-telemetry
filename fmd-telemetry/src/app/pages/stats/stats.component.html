@@ -10,7 +10,7 @@
     </div>
 
     <div class="unique-users">
-        <h2>Unique Users Monitored: {{ uniqueUserCount }}</h2>
+        <h2>Unique users: {{ uniqueUserCount }}</h2>
     </div>
 
     <div class="chart-grid">
@@ -40,8 +40,14 @@
         </div>
 
         <div class="chart-area">
+            <div #chartContainer7 class="chart-container"></div>
+            <p class="chart-text">Session count per day of the week</p>
+        </div>
+
+        <div class="chart-area">
             <div #chartContainer6 class="chart-container"></div>
             <p class="chart-text">App Initializations over time for unique users</p>
         </div>
+
     </div>
 </div>
