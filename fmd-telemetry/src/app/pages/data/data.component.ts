@@ -4,7 +4,7 @@ import { UserSession } from '../../model/userSession.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Endpoints } from '../../model/endpoints.model';
-import { DatabasePruning } from '../../model/DatabasePruning.model';
+import { DatabasePruning } from '../../model/databasePruning.model';
 
 @Component({
   selector: 'app-data',

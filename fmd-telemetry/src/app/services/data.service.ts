@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserSession } from '../model/userSession.model';
 import { Endpoints } from '../model/endpoints.model';
-import { DatabasePruning } from '../model/DatabasePruning.model';
+import { DatabasePruning } from '../model/databasePruning.model';
 
 @Injectable({
   providedIn: 'root'
