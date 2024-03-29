@@ -29,3 +29,6 @@ fetch_and_save("Endpoints", 'fmd-telemetry/src/assets/Endpoints.json')
 
 # Fetch and save FMD.UserSession
 fetch_and_save("UserSession", 'fmd-telemetry/src/assets/UserSession.json')
+
+# Fetch and save FMD.DatabasePruning
+fetch_and_save("DatabasePruning", 'fmd-telemetry/src/assets/DatabasePruning.json')

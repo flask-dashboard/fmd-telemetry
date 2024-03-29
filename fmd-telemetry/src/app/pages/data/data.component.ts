@@ -4,7 +4,7 @@ import { UserSession } from '../../model/userSession.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Endpoints } from '../../model/endpoints.model';
-import { DatePipe } from '@angular/common';
+import { DatabasePruning } from '../../model/DatabasePruning.model';
 
 @Component({
   selector: 'app-data',
@@ -14,14 +14,18 @@ import { DatePipe } from '@angular/common';
 export class DataComponent implements OnInit {
   userSessionDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'time_initialized'];
   userSessionDataSource = new MatTableDataSource<UserSession>();
-
-  endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];
   endpointsDataSource = new MatTableDataSource<Endpoints>();
+  endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];
+  databasePruningDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'age_threshold_weeks', 'delete_custom_graphs'];
+  databasePruningDataSource = new MatTableDataSource<DatabasePruning>();
   @ViewChild('sortUserSession') sortUserSession?: MatSort;
   @ViewChild('sortEndpoints') sortEndpoints?: MatSort;
+  @ViewChild('sortDatabasePruning') sortDatabasePruning?: MatSort;
 
   activeUserSessionFilters: { [key: string]: string } = {};
   activeEndpointsFilters: { [key: string]: string } = {};
+  activeDatabasePruningFilters: { [key: string]: string } = {};
+
 
   constructor(private dataService: DataService) { }
 
@@ -51,6 +55,18 @@ export class DataComponent implements OnInit {
       }
       return true;
     };
+
+    this.databasePruningDataSource.filterPredicate = (data: DatabasePruning, filter: string) => {
+      for (const key in this.activeDatabasePruningFilters) {
+        if (this.activeDatabasePruningFilters[key]) {
+          let searchValue = data[key as keyof DatabasePruning]?.toString().toLowerCase() || '';
+          if (!searchValue.includes(this.activeDatabasePruningFilters[key])) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
   }
 
 
@@ -71,6 +87,10 @@ export class DataComponent implements OnInit {
     this.dataService.getEndpoints().subscribe(data => {
       this.endpointsDataSource.data = data;
     });
+
+    this.dataService.getDatabasePruning().subscribe(data => {
+      this.databasePruningDataSource.data = data;
+    });
   }
 
   applyUserSessionFilter(event: Event, column: string) {
@@ -83,6 +103,12 @@ export class DataComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.activeEndpointsFilters[column] = filterValue;
     this.triggerFilterUpdate(this.endpointsDataSource, this.activeEndpointsFilters);
+  }
+
+  applyDatabasePruningFilter(event: Event, column: string) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.activeDatabasePruningFilters[column] = filterValue;
+    this.triggerFilterUpdate(this.databasePruningDataSource, this.activeDatabasePruningFilters);
   }
 
   triggerFilterUpdate<T>(dataSource: MatTableDataSource<T>, activeFilters: { [key: string]: string }) {

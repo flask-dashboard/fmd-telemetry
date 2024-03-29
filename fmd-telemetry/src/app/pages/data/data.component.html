@@ -281,5 +281,118 @@
                 </cdk-virtual-scroll-viewport>
             </div>
         </mat-tab>
+
+        <mat-tab label="Database Pruning">
+            <div class="table-container mat-elevation-z8">
+                <cdk-virtual-scroll-viewport itemSize="50" class="table-viewport">
+                    <table mat-table [dataSource]="databasePruningDataSource" class="mat-elevation-z8">
+
+                        <ng-container matColumnDef="_id">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Object ID</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, '_id')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data._id}} </td>
+                        </ng-container>
+
+                        <!-- Created At Column -->
+                        <ng-container matColumnDef="_created_at">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Created At</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, '_created_at')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data._created_at}} </td>
+                        </ng-container>
+
+                        <!-- Updated At Column -->
+                        <ng-container matColumnDef="_updated_at">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Updated At</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, '_updated_at')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data._updated_at}} </td>
+                        </ng-container>
+
+                        <!-- FMD ID Column -->
+                        <ng-container matColumnDef="fmd_id">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">FMD ID</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, 'fmd_id')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data.fmd_id}} </td>
+                        </ng-container>
+
+                        <!-- Session Column -->
+                        <ng-container matColumnDef="session">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Session</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, 'session')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data.session}} </td>
+                        </ng-container>
+
+                        <!-- Age Threshold Column -->
+                        <ng-container matColumnDef="age_threshold_weeks">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Age Threshold (weeks)</div>
+                                    <div class="filter-container">
+                                        <input matInput
+                                            (keyup)="applyDatabasePruningFilter($event, 'age_threshold_weeks')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data.age_threshold_weeks}} </td>
+                        </ng-container>
+
+                        <!-- Delete Custom Graphs Column -->
+                        <ng-container matColumnDef="delete_custom_graphs">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Delete Custom Graphs</div>
+                                    <div class="filter-container">
+                                        <input matInput
+                                            (keyup)="applyDatabasePruningFilter($event, 'delete_custom_graphs')"
+                                            placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let data"> {{data.delete_custom_graphs}} </td>
+                        </ng-container>
+
+                        <!-- Row Definitions -->
+                        <tr mat-header-row *matHeaderRowDef="databasePruningDisplayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: databasePruningDisplayedColumns;"></tr>
+
+                    </table>
+                </cdk-virtual-scroll-viewport>
+            </div>
+        </mat-tab>
     </mat-tab-group>
 </div>
