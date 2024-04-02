@@ -1,0 +1,29 @@
+<div class="content">
+    <div class="header">
+        <h1>Telemetry Data Visualization</h1>
+        <p>
+            Displaying telemetry data collected from the
+            <a href="https://github.com/flask-dashboard/Flask-MonitoringDashboard" target="_blank">
+                Flask Monitoring Dashboard
+            </a>.
+        </p>
+
+        <p>
+            You can find detailed information on how we collect data
+            <a href="https://flask-monitoringdashboard.readthedocs.io/en/latest/functionality.html#telemetry" target="_blank">here</a>
+        </p>
+    </div>
+
+    <div class="chart-grid">
+        <div class="chart-area">
+            <div #chartContainer1 class="chart-container"></div>
+            <p class="chart-text">Top 10 most visited routes. </p>
+            <p class="chart-text">Note: Overview is the default route when logging in</p>
+        </div>
+        <div class="chart-area">
+            <div #chartContainer2 class="chart-container"></div>
+            <p class="chart-text">Route useage for endpoint/*/ </p>
+            <p class="chart-text">Note: Hourly_load is the default route when clicking an endpoint</p>
+        </div>
+    </div>
+</div>

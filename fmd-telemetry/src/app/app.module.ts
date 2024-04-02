@@ -13,6 +13,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
+import { UserSessionComponent } from './pages/stats/user-session/user-session.component';
+import { EndpointsComponent } from './pages/stats/endpoints/endpoints.component';
+import { DatabasePruningComponent } from './pages/stats/database-pruning/database-pruning.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     SidenavComponent,
     TopnavComponent,
     DataComponent,
-    StatsComponent
+    StatsComponent,
+    UserSessionComponent,
+    EndpointsComponent,
+    DatabasePruningComponent
   ],
   imports: [
     BrowserModule,

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent {
-
+  toggleStats: boolean = true;
 }

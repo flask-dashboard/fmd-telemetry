@@ -6,8 +6,7 @@
     "fmd_id": "889b8035-fe5d-43c0-b912-3c14b2b7b368",
     "session": 2,
     "delete_custom_graphs": false,
-    "age_threshold_weeks": 1,
-    "className": "DatabasePruning"
+    "age_threshold_weeks": 1
   },
   {
     "_id": "e5OKkbGVGF",
@@ -16,8 +15,7 @@
     "fmd_id": "40f27ed9-5605-409f-a1c8-044821b6a817",
     "session": 1,
     "delete_custom_graphs": false,
-    "age_threshold_weeks": 7,
-    "className": "DatabasePruning"
+    "age_threshold_weeks": 7
   },
   {
     "_id": "litHE8l9RX",
@@ -26,7 +24,15 @@
     "fmd_id": "7d7fe907-a65f-4e21-b8df-24f8f17d0cc9",
     "session": 1,
     "delete_custom_graphs": false,
-    "age_threshold_weeks": 1,
-    "className": "DatabasePruning"
+    "age_threshold_weeks": 1
+  },
+  {
+    "_id": "litHE8l9RX",
+    "_created_at": "2024-03-18T13:07:06.628Z",
+    "_updated_at": "2024-03-18T13:07:06.628Z",
+    "fmd_id": "7d7fe907-a65f-4e21-b8df-24f8f17d0cc9",
+    "session": 1,
+    "delete_custom_graphs": false,
+    "age_threshold_weeks": 6
   }
 ]

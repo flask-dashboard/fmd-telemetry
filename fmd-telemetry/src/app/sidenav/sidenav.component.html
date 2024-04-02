@@ -1,14 +1,19 @@
-<nav class="sidenav">
-
+<nav class="sidenav">    
     <div class="nav-item">
-        <i class="fas fa-chart-line"></i>
-        <a routerLink="/stats">Stats</a>
+        <a routerLink="/stats" (click)="toggleStats=!toggleStats">
+            <i class="fas fa-chart-line"></i> Stats
+            <i [ngClass]="{'fas fa-angle-up': !toggleStats, 'fas fa-angle-down': toggleStats}" class="arrow-icon"></i>
+        </a>
+        <div class="dropdown-menu" [ngClass]="{'show': toggleStats}">
+            <a routerLink="/stats/user-session" routerLinkActive="active" (click)="$event.stopPropagation()">User Session</a>
+            <a routerLink="/stats/endpoints" routerLinkActive="active" (click)="$event.stopPropagation()">Endpoints</a>
+            <a routerLink="/stats/database-pruning" routerLinkActive="active" (click)="$event.stopPropagation()">Database Pruning</a>
+        </div>
     </div>
 
     <div class="nav-item">
-        <i class="fas fa-database"></i>
-        <a routerLink="/data">Data</a>
+        <a routerLink="/data">
+            <i class="fas fa-database"></i> Data
+        </a>
     </div>
-
-
 </nav>

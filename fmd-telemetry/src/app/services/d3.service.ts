@@ -23,7 +23,7 @@ export class D3Service {
 
   createBarChart(element: any, data: any[], config: any): void {
     // Define dimensions and margins for the chart
-    const margin = { top: 60, right: 20, bottom: 80, left: 60 };
+    const margin = { top: 60, right: 10, bottom: 100, left: 70 };
     const width = (config.width || 500) - margin.left - margin.right;
     const height = (config.height || 300) - margin.top - margin.bottom;
 
@@ -84,8 +84,6 @@ export class D3Service {
         .style('fill', 'black')
         .text(config.yLabel);
     }
-
-    console.log("Data for Bar Chart:", data);
 
     // Create the bars with color
     svg.selectAll('.bar')
