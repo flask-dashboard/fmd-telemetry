@@ -120,7 +120,7 @@ export class EndpointsComponent implements OnInit {
   private processEndpointStarVisitsData(data: Endpoints[]): Array<{ category: string; value: number }> {
     const endpointPatterns = ['hourly_load', 'version_user', 'version_ip', 'endpoint_versions', 'endpoint_users', 'num_profiled', 'grouped_profiler', 'num_outliers', 'endpoint_status_code_summary'];
     let visitCounts: EndpointCounts = {};
-
+  
     // Define displayNameMapping with an index signature
     const displayNameMapping: { [key: string]: string } = {
       'hourly_load': 'hourly_load',
@@ -133,16 +133,16 @@ export class EndpointsComponent implements OnInit {
       'num_outliers': 'outliers',
       'endpoint_status_code_summary': 'status_code_distribution'
     };
-
+  
     data.forEach(endpoint => {
       const matchedPattern = endpointPatterns.find(pattern =>
         endpoint.name.startsWith(pattern) || endpoint.name.startsWith(pattern + "/")
       );
       if (matchedPattern) {
-        visitCounts[matchedPattern] = (visitCounts[matchedPattern] || 0) + endpoint.session;
+        visitCounts[matchedPattern] = (visitCounts[matchedPattern] || 0) + 1; 
       }
     });
-
+  
     // Convert to array, replace category names, sort by value, and take the top 10
     return Object.keys(visitCounts)
       .map(key => ({
