@@ -97,6 +97,13 @@ export class UserSessionComponent implements OnInit {
         xField: 'day',
         yField: 'count'
       });
+
+      this.createLineChart(this.chartContainer6, this.groupSessionsByDate(), {
+        title: 'App Initializations Over Time',
+        xLabel: 'Date',
+        yLabel: 'Number of Sessions'
+      });
+      
     }
   }
 
@@ -234,6 +241,21 @@ export class UserSessionComponent implements OnInit {
   }
   
 
+  private groupSessionsByDate() {
+    const sessionCountsByDate: { [key: string]: Set<string> } = {};
+
+    this.userData.forEach(session => {
+      const dateString = this.extractDateString(session._created_at);
+      if (dateString) {
+        const formattedDate = this.formatDate(dateString);
+        sessionCountsByDate[formattedDate] = sessionCountsByDate[formattedDate] || new Set();
+        sessionCountsByDate[formattedDate].add(session.fmd_id);
+      }
+    });
+
+    return this.transformData(sessionCountsByDate);
+  }
+
   private extractDateString(created_at: any): string | null {
     if (created_at && created_at.$date) {
       return created_at.$date;
@@ -257,4 +279,8 @@ export class UserSessionComponent implements OnInit {
       }));
   }
 
+  
+
 }
+
+
