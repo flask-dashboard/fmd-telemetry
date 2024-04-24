@@ -15,7 +15,7 @@ class JSONEncoder(json.JSONEncoder):
 
 # Connect to MongoDB
 client = MongoClient(os.environ['MONGODB_URI'])
-db = client.FMD  # Replace 'FMD' with your actual database name
+db = client.FMD  
 
 # Function to fetch and save collection data
 def fetch_and_save(collection_name, file_path):
