@@ -1,0 +1,135 @@
+#!/bin/bash
+
+# This script is used to setup a Parse-serer and a MongoDB database. 
+
+# Variables (edit these as needed)
+export MONGO_PASSWORD=""
+export PARSE_APP_ID=""
+export PARSE_MASTER_KEY=""
+export PARSE_PORT="4000"
+export SERVER_IP=""
+export MONGO_BIND_IP="0.0.0.0"
+export MONGO_PORT="27017"
+
+
+# Set non-interactive frontend for automatic handling of all prompts
+export DEBIAN_FRONTEND=noninteractive
+
+# Update System and Install Necessary Packages
+apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
+apt-get install -y -o Dpkg::Options::="--force-confold" git npm gnupg curl
+
+# MongoDB Installation
+wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
+echo "deb [arch=amd64,arm64] http://repo.mongodb.org/apt/debian $(lsb_release -cs)/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+apt-get update
+apt-get install -y -o Dpkg::Options::="--force-confold" mongodb-org
+
+# Start MongoDB and Configure Autostart
+sudo systemctl start mongod
+sudo systemctl enable mongod
+
+# Non-blocking status check
+if systemctl is-active --quiet mongod; then
+    echo "MongoDB is active and running."
+else
+    echo "Failed to start MongoDB."
+    exit 1
+fi
+
+# MongoDB Configuration for Remote Connections and Security
+cat > /etc/mongod.conf <<EOF
+# Security settings
+security:
+  authorization: enabled
+
+# Network-related settings
+net:
+  port: $MONGO_PORT
+  bindIp: $MONGO_BIND_IP
+
+# Storage settings
+storage:
+  dbPath: /var/lib/mongodb
+
+# System log settings
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+EOF
+
+# Ensure the MongoDB data and log directories exist and have the correct permissions
+sudo mkdir -p /var/lib/mongodb
+sudo mkdir -p /var/log/mongodb
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+sudo chown -R mongodb:mongodb /var/log/mongodb
+
+# Restart MongoDB to apply the new configuration
+sudo systemctl restart mongod
+
+# Check if MongoDB is ready before continuing
+while ! echo 'exit' | mongosh --quiet; do
+    echo "Waiting for MongoDB to initialize..."
+    sleep 1
+done
+
+# Adding MongoDB Admin User
+mongosh <<EOF
+use admin
+db.createUser({
+  user: 'admin',
+  pwd: '$MONGO_PASSWORD',
+  roles: [
+    { role: 'userAdminAnyDatabase', db: 'admin' },
+    { role: 'readWriteAnyDatabase', db: 'admin' },
+    { role: 'dbAdminAnyDatabase', db: 'admin' }
+  ]
+})
+EOF
+
+# Adding FMD Database
+mongosh <<EOF
+use admin
+db.auth('admin', '$MONGO_PASSWORD')
+
+use FMD
+db.createUser({
+  user: 'fmd_admin',
+  pwd: '$MONGO_PASSWORD',
+  roles: [
+    { role: 'dbOwner', db: 'FMD' }
+  ]
+})
+EOF
+
+# PM2 Installation
+npm install pm2 -g
+
+# Install UFW and Allow Port for Parse Server
+sudo apt install ufw
+sudo ufw allow $PARSE_PORT
+sudo ufw allow $MONGO_PORT
+
+
+# Automatically respond with "yes" to the UFW enable prompt
+echo "y" | sudo ufw enable
+
+
+# Install Parse Server
+npm install -g parse-server mongodb-runner
+
+# Environment Variables for Parse Server
+export PARSE_SERVER_ALLOW_CLIENT_CLASS_CREATION=true
+
+# Start Parse Server with PM2
+
+echo "Starting Parse Server with Master Key: $PARSE_MASTER_KEY and REST API Key: $PARSE_REST_API_KEY"
+pm2 start parse-server -- --appId $PARSE_APP_ID --masterKey $PARSE_MASTER_KEY --databaseURI mongodb://fmd_admin:$MONGO_PASSWORD@$SERVER_IP:$MONGO_PORT/FMD --port $PARSE_PORT --allowExpiredAuthDataToken true --encodeParseObjectInCloudFunction true
+
+pm2 save
+pm2 startup
+
+
+# Ensure PM2 restarts on reboot
+sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $(whoami) --hp $(echo $HOME)
