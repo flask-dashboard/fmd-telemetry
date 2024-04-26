@@ -11,6 +11,7 @@ export interface UserSession {
     monitoring_1: number;
     monitoring_2: number;
     monitoring_3: number;
+    dashboard_version: string;
     time_initialized: string;
   }
   

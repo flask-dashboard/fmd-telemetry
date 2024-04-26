@@ -12,7 +12,7 @@ import { DatabasePruning } from '../../model/databasePruning.model';
   styleUrls: ['./data.component.scss']
 })
 export class DataComponent implements OnInit {
-  userSessionDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'time_initialized'];
+  userSessionDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'dashboard_version', 'time_initialized'];
   userSessionDataSource = new MatTableDataSource<UserSession>();
   endpointsDataSource = new MatTableDataSource<Endpoints>();
   endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];

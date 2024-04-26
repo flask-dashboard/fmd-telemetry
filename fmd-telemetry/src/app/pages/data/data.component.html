@@ -164,6 +164,19 @@
                             <td mat-cell *matCellDef="let session"> {{session.monitoring_3}} </td>
                         </ng-container>
 
+                        <ng-container matColumnDef="dashboard_version">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <div class="header-with-filter">
+                                    <div class="header-title">FMD Version</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyUserSessionFilter($event, 'dashboard_version')"
+                                            (click)="stopPropagation($event)" placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let session"> {{session.dashboard_version}} </td>
+                        </ng-container>
+
                         <ng-container matColumnDef="time_initialized">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
