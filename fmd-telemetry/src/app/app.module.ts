@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserSessionComponent } from './pages/stats/user-session/user-session.component';
 import { EndpointsComponent } from './pages/stats/endpoints/endpoints.component';
 import { DatabasePruningComponent } from './pages/stats/database-pruning/database-pruning.component';
+import { FollowUpComponent } from './pages/stats/follow-up/follow-up.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DatabasePruningComponent } from './pages/stats/database-pruning/databas
     StatsComponent,
     UserSessionComponent,
     EndpointsComponent,
-    DatabasePruningComponent
+    DatabasePruningComponent,
+    FollowUpComponent
   ],
   imports: [
     BrowserModule,
