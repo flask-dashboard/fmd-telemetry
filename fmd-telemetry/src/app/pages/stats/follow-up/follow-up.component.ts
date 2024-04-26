@@ -70,7 +70,7 @@ export class FollowUpComponent implements OnInit {
       this.createChart(this.chartContainer1, aggregatedData, {
         title: 'Feedback Key Distribution',
         xLabel: 'Feedback Key',
-        yLabel: 'Occurrences',
+        yLabel: 'Count',
         xField: 'key',
         yField: 'value'
       });
