@@ -32,3 +32,6 @@ fetch_and_save("UserSession", 'fmd-telemetry/src/assets/UserSession.json')
 
 # Fetch and save FMD.DatabasePruning
 fetch_and_save("DatabasePruning", 'fmd-telemetry/src/assets/DatabasePruning.json')
+
+# Fetch and save FMD.FollowUp
+fetch_and_save("FollowUp", 'fmd-telemetry/src/assets/FollowUp.json')

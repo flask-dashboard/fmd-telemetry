@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Endpoints } from '../../model/endpoints.model';
 import { DatabasePruning } from '../../model/databasePruning.model';
+import { FollowUp } from '../../model/followUp.model';
 
 @Component({
   selector: 'app-data',
@@ -13,18 +14,24 @@ import { DatabasePruning } from '../../model/databasePruning.model';
 })
 export class DataComponent implements OnInit {
   userSessionDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'dashboard_version', 'time_initialized'];
+  databasePruningDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'age_threshold_weeks', 'delete_custom_graphs'];
+  endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];
+  followUpDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'feedback', 'fmd_id', 'session'];
+
   userSessionDataSource = new MatTableDataSource<UserSession>();
   endpointsDataSource = new MatTableDataSource<Endpoints>();
-  endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];
-  databasePruningDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'age_threshold_weeks', 'delete_custom_graphs'];
   databasePruningDataSource = new MatTableDataSource<DatabasePruning>();
+  followUpDataSource = new MatTableDataSource<FollowUp>();
+  
   @ViewChild('sortUserSession') sortUserSession?: MatSort;
   @ViewChild('sortEndpoints') sortEndpoints?: MatSort;
   @ViewChild('sortDatabasePruning') sortDatabasePruning?: MatSort;
+  @ViewChild('sortFollowUp') sortFollowUp?: MatSort;
 
   activeUserSessionFilters: { [key: string]: string } = {};
   activeEndpointsFilters: { [key: string]: string } = {};
   activeDatabasePruningFilters: { [key: string]: string } = {};
+  activeFollowUpFilters: { [key: string]: string } = {};
 
 
   constructor(private dataService: DataService) { }
@@ -77,6 +84,14 @@ export class DataComponent implements OnInit {
     if (this.sortEndpoints) {
       this.endpointsDataSource.sort = this.sortEndpoints;
     }
+
+    if (this.sortDatabasePruning) {
+      this.databasePruningDataSource.sort = this.sortDatabasePruning;
+    }
+
+    if (this.sortFollowUp) {
+      this.followUpDataSource.sort = this.sortFollowUp;
+    }
   }
 
   loadData() {
@@ -90,6 +105,10 @@ export class DataComponent implements OnInit {
 
     this.dataService.getDatabasePruning().subscribe(data => {
       this.databasePruningDataSource.data = data;
+    });
+
+    this.dataService.getFollowUp().subscribe(data => {
+      this.followUpDataSource.data = data;
     });
   }
 
@@ -109,6 +128,12 @@ export class DataComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.activeDatabasePruningFilters[column] = filterValue;
     this.triggerFilterUpdate(this.databasePruningDataSource, this.activeDatabasePruningFilters);
+  }
+
+  applyFollowUpFilter(event: Event, column: string) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.activeFollowUpFilters[column] = filterValue;
+    this.triggerFilterUpdate(this.followUpDataSource, this.activeFollowUpFilters);
   }
 
   triggerFilterUpdate<T>(dataSource: MatTableDataSource<T>, activeFilters: { [key: string]: string }) {

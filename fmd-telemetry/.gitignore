@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+src/assets/UserSession.json
+src/assets/Endpoints.json
+src/assets/DatabasePruning.json
+src/assets/FollowUp.json
