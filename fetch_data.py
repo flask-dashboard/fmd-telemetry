@@ -8,9 +8,11 @@ with open('ip_address', 'r') as file:
     server_info = file.read().strip()
 
 # Construct the Parse Server URL using the read server info
-PARSE_APP_ID = os.environ['PARSE_APP_ID']
 PARSE_SERVER_URL = f"http://{server_info}/parse"
+PARSE_APP_ID = os.environ['PARSE_APP_ID']
 
+if not PARSE_APP_ID:
+    raise EnvironmentError("The 'PARSE_APP_ID' environment variable is not set.")
 
 # HTTP headers
 headers = {

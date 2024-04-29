@@ -23,7 +23,7 @@ jobs:
 
       - name: Fetch Data
         env:
-          MONGODB_URI: ${{ secrets.PARSE_APP_ID }}
+          PARSE_APP_ID: ${{ secrets.PARSE_APP_ID }}
         run: |
           python fetch_data.py
 
