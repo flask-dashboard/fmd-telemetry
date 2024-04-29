@@ -16,7 +16,7 @@ if not PARSE_APP_ID:
 
 # HTTP headers
 headers = {
-    'X-Parse-Application-Id': 'myAppId',
+    'X-Parse-Application-Id': PARSE_APP_ID,
     'Content-Type': 'application/json'
 }
 
