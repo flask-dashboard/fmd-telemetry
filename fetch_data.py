@@ -1,37 +1,35 @@
-from pymongo import MongoClient
+import requests
 import json
 import os
-from bson import ObjectId
-from datetime import datetime
 
-# Custom JSON Encoder for handling MongoDB ObjectId and datetime objects
-class JSONEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, ObjectId):
-            return str(o)
-        if isinstance(o, datetime):
-            return o.isoformat()
-        return json.JSONEncoder.default(self, o)
+# Parse Server credentials
+# Reading the server IP and port from the file 'ip_address' in the same directory
+with open('ip_address', 'r') as file:
+    server_info = file.read().strip()
 
-# Connect to MongoDB
-client = MongoClient(os.environ['MONGODB_URI'])
-db = client.FMD  
+# Construct the Parse Server URL using the read server info
+PARSE_APP_ID = os.environ['PARSE_APP_ID']
+PARSE_SERVER_URL = f"http://{server_info}/parse"
+
+
+# HTTP headers
+headers = {
+    'X-Parse-Application-Id': 'myAppId',
+    'Content-Type': 'application/json'
+}
 
 # Function to fetch and save collection data
-def fetch_and_save(collection_name, file_path):
-    data = list(db[collection_name].find({}))
+def fetch_and_save(class_name, file_path):
+    response = requests.get(f"{PARSE_SERVER_URL}/classes/{class_name}", headers=headers)
+    response.raise_for_status()  # Raise an error if the request fails
+    data = response.json()["results"]
+
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, 'w') as file:
-        file.write(JSONEncoder().encode(data))
+        json.dump(data, file, indent=2)
 
-# Fetch and save FMD.Endpoints
+# Fetch and save various classes
 fetch_and_save("Endpoints", 'fmd-telemetry/src/assets/Endpoints.json')
-
-# Fetch and save FMD.UserSession
 fetch_and_save("UserSession", 'fmd-telemetry/src/assets/UserSession.json')
-
-# Fetch and save FMD.DatabasePruning
 fetch_and_save("DatabasePruning", 'fmd-telemetry/src/assets/DatabasePruning.json')
-
-# Fetch and save FMD.FollowUp
 fetch_and_save("FollowUp", 'fmd-telemetry/src/assets/FollowUp.json')

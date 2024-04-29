@@ -24,7 +24,7 @@ jobs:
 
       - name: Fetch Data from MongoDB
         env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_URI: ${{ secrets.PARSE_APP_ID }}
         run: |
           python fetch_data.py
 

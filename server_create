@@ -108,6 +108,7 @@ npm install pm2 -g
 
 # Install UFW and Allow Port for Parse Server
 sudo apt install ufw
+sudo ufw allow ssh
 sudo ufw allow $PARSE_PORT
 sudo ufw allow $MONGO_PORT
 
