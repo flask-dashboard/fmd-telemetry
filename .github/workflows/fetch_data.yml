@@ -1,4 +1,4 @@
-name: Fetch MongoDB Data
+name: Fetch Data
 
 on:
   schedule:
@@ -17,12 +17,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install MongoDB client
+      - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install pymongo
+          pip install requests
 
-      - name: Fetch Data from MongoDB
+      - name: Fetch Data
         env:
           MONGODB_URI: ${{ secrets.PARSE_APP_ID }}
         run: |
@@ -35,3 +34,4 @@ jobs:
           git add -A
           git commit -m "Update data files" || true
           git push
+
