@@ -12,6 +12,14 @@
             You can find detailed information on how we collect data
             <a href="https://flask-monitoringdashboard.readthedocs.io/en/latest/functionality.html#telemetry" target="_blank">here</a>
         </p>
+
+        <div class="version-selector">
+            <label for="versionDropdown">Select Dashboard Version:</label>
+            <select id="versionDropdown" (change)="onVersionChange($event)">
+                <option *ngFor="let version of dashboardVersions" [value]="version">{{version}}</option>
+            </select>
+        </div>
+        
     </div>
 
     <div class="unique-users">
@@ -48,5 +56,17 @@
             <div #chartContainer6 class="chart-container"></div>
             <p class="chart-text">App Initializations over time for unique users</p>
         </div>
+
+        <div class="chart-area">
+            <div #chartContainer10 class="chart-container"></div>
+            <p class="chart-text">Top 10 Dashboard Versions</p>
+        </div>
+
+        <div class="chart-area">
+            <div #chartContainer11 class="chart-container"></div>
+            <p class="chart-text">Top 10 Python Versions</p>
+        </div>
+        
+        
     </div>
 </div>

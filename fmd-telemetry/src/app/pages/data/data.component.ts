@@ -13,10 +13,10 @@ import { FollowUp } from '../../model/followUp.model';
   styleUrls: ['./data.component.scss']
 })
 export class DataComponent implements OnInit {
-  userSessionDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'dashboard_version', 'time_initialized'];
-  databasePruningDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'fmd_id', 'session', 'age_threshold_weeks', 'delete_custom_graphs'];
-  endpointsDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'name', 'fmd_id', 'session'];
-  followUpDisplayedColumns: string[] = ['_id', '_created_at', '_updated_at', 'feedback', 'fmd_id', 'session'];
+  userSessionDisplayedColumns: string[] = ['_id', '_created_at', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'dashboard_version', 'python_version', 'time_initialized'];
+  databasePruningDisplayedColumns: string[] = ['_id', '_created_at', 'fmd_id', 'session', 'age_threshold_weeks', 'delete_custom_graphs'];
+  endpointsDisplayedColumns: string[] = ['_id', '_created_at', 'name', 'fmd_id', 'session'];
+  followUpDisplayedColumns: string[] = ['_id', '_created_at', 'feedback', 'fmd_id', 'session'];
 
   userSessionDataSource = new MatTableDataSource<UserSession>();
   endpointsDataSource = new MatTableDataSource<Endpoints>();

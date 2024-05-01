@@ -12,6 +12,7 @@ export interface UserSession {
     monitoring_2: number;
     monitoring_3: number;
     dashboard_version: string;
+    python_version: string;    
     time_initialized: string;
   }
   

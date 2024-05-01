@@ -42,23 +42,6 @@
 
                         </ng-container>
 
-                        <ng-container matColumnDef="_updated_at">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                <div class="header-with-filter">
-                                    <div class="header-title">Updated At</div>
-                                    <div class="filter-container">
-                                        <input matInput (keyup)="applyUserSessionFilter($event, '_updated_at')"
-                                            (click)="stopPropagation($event)" placeholder=" ">
-                                    </div>
-                                </div>
-                            </th>
-                            <td mat-cell *matCellDef="let session">
-                                {{ session._updated_at }}
-                            </td>
-
-                        </ng-container>
-
-
                         <ng-container matColumnDef="fmd_id">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
@@ -177,6 +160,19 @@
                             <td mat-cell *matCellDef="let session"> {{session.dashboard_version}} </td>
                         </ng-container>
 
+                        <ng-container matColumnDef="python_version">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <div class="header-with-filter">
+                                    <div class="header-title">Python Version</div>
+                                    <div class="filter-container">
+                                        <input matInput (keyup)="applyUserSessionFilter($event, 'python_version')"
+                                            (click)="stopPropagation($event)" placeholder=" ">
+                                    </div>
+                                </div>
+                            </th>
+                            <td mat-cell *matCellDef="let session"> {{session.python_version}} </td>
+                        </ng-container>
+
                         <ng-container matColumnDef="time_initialized">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
@@ -228,22 +224,6 @@
                             </th>
                             <td mat-cell *matCellDef="let endpoint">
                                 {{endpoint._created_at}}
-                            </td>
-
-                        </ng-container>
-
-                        <ng-container matColumnDef="_updated_at">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                <div class="header-with-filter">
-                                    <div class="header-title">Updated At </div>
-                                    <div class="filter-container">
-                                        <input matInput (keyup)="applyEndpointsFilter($event, '_updated_at')"
-                                            (click)="stopPropagation($event)" placeholder=" ">
-                                    </div>
-                                </div>
-                            </th>
-                            <td mat-cell *matCellDef="let endpoint">
-                                {{endpoint._updated_at}}
                             </td>
 
                         </ng-container>
@@ -325,20 +305,6 @@
                                 </div>
                             </th>
                             <td mat-cell *matCellDef="let data"> {{data._created_at}} </td>
-                        </ng-container>
-
-                        <!-- Updated At Column -->
-                        <ng-container matColumnDef="_updated_at">
-                            <th mat-header-cell *matHeaderCellDef>
-                                <div class="header-with-filter">
-                                    <div class="header-title">Updated At</div>
-                                    <div class="filter-container">
-                                        <input matInput (keyup)="applyDatabasePruningFilter($event, '_updated_at')"
-                                            placeholder=" ">
-                                    </div>
-                                </div>
-                            </th>
-                            <td mat-cell *matCellDef="let data"> {{data._updated_at}} </td>
                         </ng-container>
 
                         <!-- FMD ID Column -->
@@ -439,22 +405,6 @@
                             </th>
                             <td mat-cell *matCellDef="let followUp">
                                 {{followUp._created_at}}
-                            </td>
-
-                        </ng-container>
-
-                        <ng-container matColumnDef="_updated_at">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                <div class="header-with-filter">
-                                    <div class="header-title">Updated At </div>
-                                    <div class="filter-container">
-                                        <input matInput (keyup)="applyFollowUpFilter($event, '_updated_at')"
-                                            (click)="stopPropagation($event)" placeholder=" ">
-                                    </div>
-                                </div>
-                            </th>
-                            <td mat-cell *matCellDef="let followUp">
-                                {{followUp._updated_at}}
                             </td>
 
                         </ng-container>
