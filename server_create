@@ -137,6 +137,11 @@ pm2 start parse-server -- --appId $PARSE_APP_ID --masterKey $PARSE_MASTER_KEY --
 pm2 save
 pm2 startup
 
+
+# Ensure PM2 restarts on reboot
+sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $(whoami) --hp $(echo $HOME)
+
+
 # Ensure the Parse JavaScript SDK and Axios is installed
 npm install parse
 npm install axios
