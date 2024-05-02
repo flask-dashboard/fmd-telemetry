@@ -2,14 +2,28 @@
 
 # This script is used to setup a Parse-serer and a MongoDB database. 
 
-# Variables (edit these as needed)
+# export MONGO_PASSWORD=""
+# export PARSE_APP_ID="fmd-md"
+# export PARSE_MASTER_KEY=""
+# export PARSE_PORT="4000"
+# export SERVER_IP=""
+# export MONGO_BIND_IP="0.0.0.0"
+# export MONGO_PORT="27017"
+
+# Variables for new database (edit these as needed)
 export MONGO_PASSWORD=""
-export PARSE_APP_ID=""
+export PARSE_APP_ID="fmd-md"
 export PARSE_MASTER_KEY=""
 export PARSE_PORT="4000"
 export SERVER_IP=""
 export MONGO_BIND_IP="0.0.0.0"
 export MONGO_PORT="27017"
+export CLASSES='["DatabasePruning", "Endpoints", "UserSession", "FollowUp"]'
+
+# Variables for old database connection
+export OLD_PARSE_APP_ID=""
+export OLD_PARSE_PORT="4000"
+export OLD_SERVER_IP=""
 
 
 # Set non-interactive frontend for automatic handling of all prompts
@@ -125,12 +139,117 @@ export PARSE_SERVER_ALLOW_CLIENT_CLASS_CREATION=true
 
 # Start Parse Server with PM2
 
-echo "Starting Parse Server with Master Key: $PARSE_MASTER_KEY and REST API Key: $PARSE_REST_API_KEY"
+echo "Starting Parse Server with Master Key: $PARSE_MASTER_KEY"
 pm2 start parse-server -- --appId $PARSE_APP_ID --masterKey $PARSE_MASTER_KEY --databaseURI mongodb://fmd_admin:$MONGO_PASSWORD@$SERVER_IP:$MONGO_PORT/FMD --port $PARSE_PORT --allowExpiredAuthDataToken true --encodeParseObjectInCloudFunction true
 
 pm2 save
 pm2 startup
 
+# Ensure the Parse JavaScript SDK and Axios is installed
+npm install parse
+npm install axios
+npm install winston
+
+
+# Create migration script with logging
+echo "Creating migration script..."
+cat << 'EOF' > migrate_data.js
+const Parse = require('parse/node');
+const axios = require('axios');
+const { createLogger, format, transports } = require('winston');
+
+const logger = createLogger({
+    format: format.combine(
+        format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        format.printf(({ timestamp, level, message }) => `${timestamp} ${level.toUpperCase()}: ${message}`)
+    ),
+    transports: [
+        new transports.File({ filename: 'dataMigration.log' })
+    ]
+});
+
+Parse.initialize(process.env.PARSE_APP_ID, '', process.env.PARSE_MASTER_KEY);
+Parse.serverURL = `http://${process.env.SERVER_IP}:${process.env.PARSE_PORT}/parse`;
+
+async function migrateData(classes) {
+    for (const className of classes) {
+        logger.info(`Migrating class ${className}...`);
+
+        const oldParseURL = `http://${process.env.OLD_SERVER_IP}:${process.env.OLD_PARSE_PORT}/parse/classes/${className}`;
+
+        let skip = 0; // Track how many records have been fetched
+        const limit = 100; // Define the limit per request
+        let hasMoreData = true;
+
+        while (hasMoreData) {
+            logger.info(`Fetching data from: ${oldParseURL} with skip ${skip} and limit ${limit}`);
+
+            try {
+                const response = await axios.get(`${oldParseURL}?skip=${skip}&limit=${limit}`, {
+                    headers: {
+                        'X-Parse-Application-Id': process.env.OLD_PARSE_APP_ID,
+                    },
+                });
+
+                if (response.data && response.data.results) {
+                    const records = response.data.results;
+
+                    for (const record of records) {
+                        const NewClass = Parse.Object.extend(className);
+                        const newObj = new NewClass();
+
+                        for (const key in record) {
+                            if (!["objectId", "createdAt", "updatedAt", "className"].includes(key)) {
+                                newObj.set(key, record[key]);
+                            }
+                        }
+
+                        await newObj.save();
+                    }
+
+                    logger.info(`Migrated ${records.length} records for class ${className}.`);
+
+                    // Check if there are more records to fetch
+                    if (records.length < limit) {
+                        hasMoreData = false;
+                    } else {
+                        skip += limit; // Move the skip forward
+                    }
+                } else {
+                    logger.info(`No data found for class ${className}.`);
+                    hasMoreData = false;
+                }
+            } catch (error) {
+                logger.error(`Error migrating class ${className}: ${error.message}`);
+                hasMoreData = false; // Stop in case of an error
+            }
+        }
+    }
+}
+
+migrateData(process.argv.slice(2)).catch(error => logger.error(`Unhandled Error: ${error.message}`));
+EOF
+
+# Convert CLASSES to a space-separated string
+classes=$(echo $CLASSES | sed 's/\[//; s/\]//; s/,/ /g; s/\"//g')
+
+# Run the script passing in the classes
+echo "Running migration"
+node migrate_data.js $classes > dataMigration.log 2>&1
+echo "Migration complete"
+
+# Finish setup and close down class creation
+
+export PARSE_SERVER_ALLOW_CLIENT_CLASS_CREATION=false
+pm2 restart parse-server --update-env
+
+pm2 save
 
 # Ensure PM2 restarts on reboot
 sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $(whoami) --hp $(echo $HOME)
+
+# Modify UFW rules to close mongo port after changes are done
+sudo ufw delete allow $MONGO_PORT
+sudo ufw reload
+
+echo "Setup and data migration completed."
