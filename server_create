@@ -2,14 +2,6 @@
 
 # This script is used to setup a Parse-serer and a MongoDB database. 
 
-# export MONGO_PASSWORD=""
-# export PARSE_APP_ID="fmd-md"
-# export PARSE_MASTER_KEY=""
-# export PARSE_PORT="4000"
-# export SERVER_IP=""
-# export MONGO_BIND_IP="0.0.0.0"
-# export MONGO_PORT="27017"
-
 # Variables for new database (edit these as needed)
 export MONGO_PASSWORD=""
 export PARSE_APP_ID="fmd-md"

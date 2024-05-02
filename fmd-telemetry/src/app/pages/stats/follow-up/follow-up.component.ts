@@ -19,7 +19,7 @@ export class FollowUpComponent implements OnInit {
 
   @ViewChild('chartContainer1') private chartContainer1!: ElementRef;
 
-  
+
   constructor(private dataService: DataService, private d3Service: D3Service) { }
 
 
@@ -44,6 +44,7 @@ export class FollowUpComponent implements OnInit {
       }
     });
   }
+  
 
   private checkDataLoaded() {
     if (this.FollowUpLoaded) {
@@ -63,6 +64,7 @@ export class FollowUpComponent implements OnInit {
       yField: config.yField || 'value'
     });
   }
+  
 
   private setupCharts() {
     if (this.isDataLoaded) {
@@ -76,18 +78,22 @@ export class FollowUpComponent implements OnInit {
       });
     }
   }
-  
+
   private aggregateFeedbackKeys(followUps: FollowUp[]): any[] {
     const feedbackCounts = new Map<string, number>();
     followUps.forEach(followUp => {
-      followUp.feedback.forEach(item => {
-        feedbackCounts.set(item.key, (feedbackCounts.get(item.key) || 0) + 1);
-      });
+      if (followUp && Array.isArray(followUp.feedback)) {
+        followUp.feedback.forEach(item => {
+          feedbackCounts.set(item.key, (feedbackCounts.get(item.key) || 0) + 1);
+        });
+      }
     });
     const result = Array.from(feedbackCounts, ([key, value]) => ({ key, value }));
     return result;
   }
   
+
+
 
 
 }
