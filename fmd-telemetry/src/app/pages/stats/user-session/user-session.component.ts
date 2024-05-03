@@ -319,7 +319,7 @@ export class UserSessionComponent implements OnInit {
     const versionCounts: { [key: string]: number } = {};
 
     Object.values(latestSessions).forEach(session => {
-      const version = session.dashboard_version || ">3.3.2";
+      const version = session.dashboard_version || "<3.3.2";
       versionCounts[version] = versionCounts[version] || 0;
       versionCounts[version] += 1;
     });
@@ -350,7 +350,7 @@ export class UserSessionComponent implements OnInit {
     // Count the occurrences of each Python version in the latest sessions
     const pythonVersionCounts: { [key: string]: number } = {};
     Object.values(latestSessions).forEach(session => {
-      const pythonVersion = session.python_version || "No Python Version Available";
+      const pythonVersion = session.python_version || "Version unavailable";
       pythonVersionCounts[pythonVersion] = (pythonVersionCounts[pythonVersion] || 0) + 1;
     });
 
