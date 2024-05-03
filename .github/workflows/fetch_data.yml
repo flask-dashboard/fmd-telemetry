@@ -9,7 +9,7 @@ jobs:
   fetch_data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master branch
+      - name: Checkout master gh-pages
         uses: actions/checkout@v3
 
       - name: Set up Python

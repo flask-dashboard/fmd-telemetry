@@ -1,6 +1,8 @@
 name: Deploy Angular to Pages
 
 on:
+  push:
+    branches: ["master"]
   workflow_run:
     workflows: ["Fetch Data"]
     branches: ["master"]
