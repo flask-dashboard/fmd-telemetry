@@ -17,6 +17,19 @@ export OLD_PARSE_APP_ID=""
 export OLD_PARSE_PORT="4000"
 export OLD_SERVER_IP=""
 
+# Check for existing swap space and add if none exists
+if free | awk '/Swap:/ {exit !$2}'; then
+    echo "Swap exists."
+else
+    echo "No swap space detected. Adding swap space..."
+    sudo fallocate -l 1G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    # Make the swap file permanent by adding it to /etc/fstab
+    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+fi
+
 
 # Set non-interactive frontend for automatic handling of all prompts
 export DEBIAN_FRONTEND=noninteractive
