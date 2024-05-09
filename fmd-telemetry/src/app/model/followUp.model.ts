@@ -1,13 +1,10 @@
 export interface FollowUp {
-    _id: string;
-    fmd_id: string;
-    session: number;
-    feedback: FeedbackItem[];
-    _created_at: { $date: string };
-    _updated_at: { $date: string };
+    objectId: string;
+    reasons: (string | OtherReason)[];
+    createdAt: { $date: string };
+    updatedAt: { $date: string };
 }
 
-export interface FeedbackItem {
-    key: string;
-    other_reason?: string;
+export interface OtherReason {
+    other: string; 
 }

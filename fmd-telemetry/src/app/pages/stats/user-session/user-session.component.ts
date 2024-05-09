@@ -241,29 +241,6 @@ export class UserSessionComponent implements OnInit {
     ];
   }
 
-  private calculateAverageEndpointsAndBlueprints(data: UserSession[]): any[] {
-    let totalEndpoints = 0;
-    let totalBlueprints = 0;
-    const count = data.length;
-
-    if (count > 0) {
-      data.forEach(session => {
-        totalEndpoints += session.endpoints;
-        totalBlueprints += session.blueprints;
-      });
-
-      const averageEndpoints = parseFloat((totalEndpoints / count).toFixed(2));
-      const averageBlueprints = parseFloat((totalBlueprints / count).toFixed(2));
-
-      return [
-        { category: 'Average Endpoints', value: averageEndpoints },
-        { category: 'Average Blueprints', value: averageBlueprints }
-      ];
-    }
-
-    return [];
-  }
-
   private aggregateUsageByWeekday(data: UserSession[]): any[] {
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const weekdayCounts: { [key: string]: number } = {};
@@ -271,7 +248,7 @@ export class UserSessionComponent implements OnInit {
     weekdays.forEach(day => { weekdayCounts[day] = 0; });
 
     data.forEach(session => {
-      const dateString = this.extractDateString(session._created_at);
+      const dateString = this.extractDateString(session.createdAt);
 
       if (dateString) {
         const dayOfWeek = new Date(dateString).getDay();
@@ -287,7 +264,7 @@ export class UserSessionComponent implements OnInit {
     const sessionCountsByDate: { [key: string]: Set<string> } = {};
 
     data.forEach(session => {
-      const dateString = this.extractDateString(session._created_at);
+      const dateString = this.extractDateString(session.createdAt);
       if (dateString) {
         const formattedDate = this.formatDate(dateString);
         sessionCountsByDate[formattedDate] = sessionCountsByDate[formattedDate] || new Set();
@@ -305,12 +282,11 @@ export class UserSessionComponent implements OnInit {
     data.forEach(session => {
       const fmdId = session.fmd_id;
 
-      // Extract the date string from the session object
-      const createdAtDateStr = session._created_at.$date;
-      const createdAt = new Date(createdAtDateStr); // Convert the string to a Date object
+      const createdAtDateObj = session.createdAt?.$date;
+      const createdAt = new Date(createdAtDateObj);
 
       // Check if this session is the latest for this fmd_id
-      if (!latestSessions[fmdId] || createdAt > new Date(latestSessions[fmdId]._created_at.$date)) {
+      if (!latestSessions[fmdId] || createdAt > new Date(latestSessions[fmdId].createdAt.$date)) {
         latestSessions[fmdId] = session;
       }
     });
@@ -331,43 +307,39 @@ export class UserSessionComponent implements OnInit {
 
     // Limit to top 10
     return sortedVersions.slice(0, 10).map(item => ({ category: item.version, value: item.count }));
-  }
+}
 
-  private getTop10PythonVersions(data: UserSession[]): any[] {
-    // Create a map to store the latest session for each fmd_id
-    const latestSessions: { [key: string]: UserSession } = {};
+private getTop10PythonVersions(data: UserSession[]): any[] {
+  // Create a map to store the latest session for each fmd_id
+  const latestSessions: { [key: string]: UserSession } = {};
 
-    // Iterate over the sessions to find the latest session for each fmd_id
-    data.forEach(session => {
-      const fmdId = session.fmd_id;
+  // Iterate over the sessions to find the latest session for each fmd_id
+  data.forEach(session => {
+    const fmdId = session.fmd_id;
 
-      // Check if the current session is the latest for this fmd_id
-      if (!latestSessions[fmdId] || new Date(session._created_at.$date) > new Date(latestSessions[fmdId]._created_at.$date)) {
-        latestSessions[fmdId] = session;
-      }
-    });
+    // Check if the current session is the latest for this fmd_id
+    if (!latestSessions[fmdId] || new Date(session.createdAt.$date) > new Date(latestSessions[fmdId].createdAt.$date)) {
+      latestSessions[fmdId] = session;
+    }
+  });
 
-    // Count the occurrences of each Python version in the latest sessions
-    const pythonVersionCounts: { [key: string]: number } = {};
-    Object.values(latestSessions).forEach(session => {
-      const pythonVersion = session.python_version || "Version unavailable";
-      pythonVersionCounts[pythonVersion] = (pythonVersionCounts[pythonVersion] || 0) + 1;
-    });
+  // Count the occurrences of each Python version in the latest sessions
+  const pythonVersionCounts: { [key: string]: number } = {};
+  Object.values(latestSessions).forEach(session => {
+    const fullVersion = session.python_version || "Version unavailable";
+    const shortVersion = fullVersion.match(/\d+\.\d+\.\d+/)?.[0] || "Version unavailable"; // Extracts version number
+    pythonVersionCounts[shortVersion] = (pythonVersionCounts[shortVersion] || 0) + 1;
+  });
 
-    // Sort the Python versions by count and limit to top 10
-    const sortedPythonVersions = Object.entries(pythonVersionCounts)
-      .map(([pythonVersion, count]) => ({ pythonVersion, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 10);
+  // Sort the Python versions by count and limit to top 10
+  const sortedPythonVersions = Object.entries(pythonVersionCounts)
+    .map(([pythonVersion, count]) => ({ pythonVersion, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 10);
 
-    // Return the top 10 Python versions
-    return sortedPythonVersions.map(item => ({ category: item.pythonVersion, value: item.count }));
-  }
-
-
-
-
-
+  // Return the top 10 Python versions
+  return sortedPythonVersions.map(item => ({ category: item.pythonVersion, value: item.count }));
+}
 
 
   private transformData(sessionCountsByDate: { [key: string]: Set<string> }): any[] {

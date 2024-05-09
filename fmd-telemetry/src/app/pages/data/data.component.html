@@ -13,31 +13,31 @@
                     <table mat-table [dataSource]="userSessionDataSource" #sortUserSession="matSort" matSort
                         class="mat-elevation-z8">
 
-                        <ng-container matColumnDef="_id">
+                        <ng-container matColumnDef="objectId">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
                                     <div class="header-title">Object ID</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyUserSessionFilter($event, '_id')"
+                                        <input matInput (keyup)="applyUserSessionFilter($event, 'objectId')"
                                             (click)="stopPropagation($event)" placeholder=" ">
                                     </div>
                                 </div>
                             </th>
-                            <td mat-cell *matCellDef="let session"> {{session._id}} </td>
+                            <td mat-cell *matCellDef="let session"> {{session.objectId}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="_created_at">
+                        <ng-container matColumnDef="createdAt">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
                                     <div class="header-title"> Created At</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyUserSessionFilter($event, '_created_at')"
+                                        <input matInput (keyup)="applyUserSessionFilter($event, 'createdAt')"
                                             (click)="stopPropagation($event)" placeholder=" ">
                                     </div>
                                 </div>
                             </th>
                             <td mat-cell *matCellDef="let session">
-                                {{session._created_at}}
+                                {{session.createdAt}}
                             </td>
 
                         </ng-container>
@@ -199,31 +199,31 @@
                 <cdk-virtual-scroll-viewport itemSize="50" class="table-viewport">
                     <table mat-table [dataSource]="endpointsDataSource" #sortEndpoints="matSort" matSort
                         class="mat-elevation-z8">
-                        <ng-container matColumnDef="_id">
+                        <ng-container matColumnDef="objectId">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
                                     <div class="header-title"> Object ID</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyEndpointsFilter($event, '_id')"
+                                        <input matInput (keyup)="applyEndpointsFilter($event, 'objectId')"
                                             (click)="stopPropagation($event)" placeholder=" ">
                                     </div>
                                 </div>
                             </th>
-                            <td mat-cell *matCellDef="let endpoint"> {{endpoint._id}} </td>
+                            <td mat-cell *matCellDef="let endpoint"> {{endpoint.objectId}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="_created_at">
+                        <ng-container matColumnDef="createdAt">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
                                     <div class="header-title"> Created At</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyEndpointsFilter($event, '_created_at')"
+                                        <input matInput (keyup)="applyEndpointsFilter($event, 'createdAt')"
                                             (click)="stopPropagation($event)" placeholder=" ">
                                     </div>
                                 </div>
                             </th>
                             <td mat-cell *matCellDef="let endpoint">
-                                {{endpoint._created_at}}
+                                {{endpoint.createdAt}}
                             </td>
 
                         </ng-container>
@@ -280,31 +280,31 @@
                 <cdk-virtual-scroll-viewport itemSize="50" class="table-viewport">
                     <table mat-table [dataSource]="databasePruningDataSource" class="mat-elevation-z8">
 
-                        <ng-container matColumnDef="_id">
+                        <ng-container matColumnDef="objectId">
                             <th mat-header-cell *matHeaderCellDef>
                                 <div class="header-with-filter">
                                     <div class="header-title">Object ID</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyDatabasePruningFilter($event, '_id')"
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, 'objectId')"
                                             placeholder=" ">
                                     </div>
                                 </div>
                             </th>
-                            <td mat-cell *matCellDef="let data"> {{data._id}} </td>
+                            <td mat-cell *matCellDef="let data"> {{data.objectId}} </td>
                         </ng-container>
 
                         <!-- Created At Column -->
-                        <ng-container matColumnDef="_created_at">
+                        <ng-container matColumnDef="createdAt">
                             <th mat-header-cell *matHeaderCellDef>
                                 <div class="header-with-filter">
                                     <div class="header-title">Created At</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyDatabasePruningFilter($event, '_created_at')"
+                                        <input matInput (keyup)="applyDatabasePruningFilter($event, 'createdAt')"
                                             placeholder=" ">
                                     </div>
                                 </div>
                             </th>
-                            <td mat-cell *matCellDef="let data"> {{data._created_at}} </td>
+                            <td mat-cell *matCellDef="let data"> {{data.createdAt}} </td>
                         </ng-container>
 
                         <!-- FMD ID Column -->
@@ -380,31 +380,31 @@
                 <cdk-virtual-scroll-viewport itemSize="50" class="table-viewport">
                     <table mat-table [dataSource]="followUpDataSource" #sortFollowUp="matSort" matSort
                         class="mat-elevation-z8">
-                        <ng-container matColumnDef="_id">
+                        <ng-container matColumnDef="objectId">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
                                     <div class="header-title"> Object ID</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyFollowUpFilter($event, '_id')"
+                                        <input matInput (keyup)="applyFollowUpFilter($event, 'objectId')"
                                             (click)="stopPropagation($event)" placeholder=" ">
                                     </div>
                                 </div>
                             </th>
-                            <td mat-cell *matCellDef="let followUp"> {{followUp._id}} </td>
+                            <td mat-cell *matCellDef="let followUp"> {{followUp.objectId}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="_created_at">
+                        <ng-container matColumnDef="createdAt">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 <div class="header-with-filter">
                                     <div class="header-title"> Created At</div>
                                     <div class="filter-container">
-                                        <input matInput (keyup)="applyFollowUpFilter($event, '_created_at')"
+                                        <input matInput (keyup)="applyFollowUpFilter($event, 'createdAt')"
                                             (click)="stopPropagation($event)" placeholder=" ">
                                     </div>
                                 </div>
                             </th>
                             <td mat-cell *matCellDef="let followUp">
-                                {{followUp._created_at}}
+                                {{followUp.createdAt}}
                             </td>
 
                         </ng-container>
@@ -420,32 +420,6 @@
                                 </div>
                             </th>
                             <td mat-cell *matCellDef="let followUp"> {{followUp.feedback}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="fmd_id">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                <div class="header-with-filter">
-                                    <div class="header-title"> FMD ID</div>
-                                    <div class="filter-container">
-                                        <input matInput (keyup)="applyFollowUpFilter($event, 'fmd_id')"
-                                            (click)="stopPropagation($event)" placeholder=" ">
-                                    </div>
-                                </div>
-                            </th>
-                            <td mat-cell *matCellDef="let followUp"> {{followUp.fmd_id}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="session">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                <div class="header-with-filter">
-                                    <div class="header-title">Session</div>
-                                    <div class="filter-container">
-                                        <input matInput (keyup)="applyFollowUpFilter($event, 'session')"
-                                            (click)="stopPropagation($event)" placeholder=" ">
-                                    </div>
-                                </div>
-                            </th>
-                            <td mat-cell *matCellDef="let followUp"> {{followUp.session}} </td>
                         </ng-container>
 
                         <tr mat-header-row *matHeaderRowDef="followUpDisplayedColumns"></tr>

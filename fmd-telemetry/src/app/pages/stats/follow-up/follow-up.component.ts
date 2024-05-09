@@ -44,7 +44,7 @@ export class FollowUpComponent implements OnInit {
       }
     });
   }
-  
+
 
   private checkDataLoaded() {
     if (this.FollowUpLoaded) {
@@ -64,11 +64,12 @@ export class FollowUpComponent implements OnInit {
       yField: config.yField || 'value'
     });
   }
-  
+
 
   private setupCharts() {
     if (this.isDataLoaded) {
       const aggregatedData = this.aggregateFeedbackKeys(this.userData);
+      console.log('Aggregated Data for Chart:', aggregatedData);  // Ensure this logs correct structure
       this.createChart(this.chartContainer1, aggregatedData, {
         title: 'Feedback Key Distribution',
         xLabel: 'Feedback Key',
@@ -81,19 +82,20 @@ export class FollowUpComponent implements OnInit {
 
   private aggregateFeedbackKeys(followUps: FollowUp[]): any[] {
     const feedbackCounts = new Map<string, number>();
+
     followUps.forEach(followUp => {
-      if (followUp && Array.isArray(followUp.feedback)) {
-        followUp.feedback.forEach(item => {
-          feedbackCounts.set(item.key, (feedbackCounts.get(item.key) || 0) + 1);
-        });
-      }
+      followUp.reasons.forEach(reason => {
+        if (typeof reason === 'string') {
+          // Reason is a string, directly increment its count
+          feedbackCounts.set(reason, (feedbackCounts.get(reason) || 0) + 1);
+        } else if (typeof reason === 'object' && reason !== null && 'other' in reason) {
+          // Reason is an object of type OtherReason, aggregate all under a single 'other' key
+          feedbackCounts.set('other', (feedbackCounts.get('other') || 0) + 1);
+        }
+      });
     });
+
     const result = Array.from(feedbackCounts, ([key, value]) => ({ key, value }));
     return result;
   }
-  
-
-
-
-
 }

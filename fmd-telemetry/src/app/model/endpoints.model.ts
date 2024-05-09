@@ -1,7 +1,7 @@
 export interface Endpoints {
-    _id: string;
-    _created_at: { $date: string };
-    _updated_at: { $date: string };
+    objectId: string;
+    createdAt: { $date: string };
+    updatedAt: { $date: string };
     ACL: any;
     name: string;
     fmd_id: string;
