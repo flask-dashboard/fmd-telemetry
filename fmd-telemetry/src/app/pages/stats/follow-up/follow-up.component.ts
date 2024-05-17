@@ -82,20 +82,19 @@ export class FollowUpComponent implements OnInit {
 
   private aggregateFeedbackKeys(followUps: FollowUp[]): any[] {
     const feedbackCounts = new Map<string, number>();
-
     followUps.forEach(followUp => {
-      followUp.reasons.forEach(reason => {
-        if (typeof reason === 'string') {
-          // Reason is a string, directly increment its count
-          feedbackCounts.set(reason, (feedbackCounts.get(reason) || 0) + 1);
-        } else if (typeof reason === 'object' && reason !== null && 'other' in reason) {
-          // Reason is an object of type OtherReason, aggregate all under a single 'other' key
-          feedbackCounts.set('other', (feedbackCounts.get('other') || 0) + 1);
-        }
-      });
+      if (followUp.reasons) {
+        followUp.reasons.forEach(reason => {
+          if (typeof reason === 'string') {
+            feedbackCounts.set(reason, (feedbackCounts.get(reason) || 0) + 1);
+          } else if (typeof reason === 'object' && reason !== null && 'other' in reason) {
+            feedbackCounts.set('other', (feedbackCounts.get('other') || 0) + 1);
+          }
+        });
+      }
     });
-
+  
     const result = Array.from(feedbackCounts, ([key, value]) => ({ key, value }));
     return result;
   }
-}
+}  
