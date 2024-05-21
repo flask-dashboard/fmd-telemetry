@@ -69,7 +69,6 @@ export class FollowUpComponent implements OnInit {
   private setupCharts() {
     if (this.isDataLoaded) {
       const aggregatedData = this.aggregateFeedbackKeys(this.userData);
-      console.log('Aggregated Data for Chart:', aggregatedData);  // Ensure this logs correct structure
       this.createChart(this.chartContainer1, aggregatedData, {
         title: 'Feedback Key Distribution',
         xLabel: 'Feedback Key',
