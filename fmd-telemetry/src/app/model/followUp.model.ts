@@ -1,6 +1,7 @@
 export interface FollowUp {
     objectId: string;
-    reasons: (string | OtherReason)[];
+    reasons?: (string | OtherReason)[];
+    feedback?: any[];
     createdAt: { $date: string };
     updatedAt: { $date: string };
 }

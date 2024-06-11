@@ -17,6 +17,8 @@ import { UserSessionComponent } from './pages/stats/user-session/user-session.co
 import { EndpointsComponent } from './pages/stats/endpoints/endpoints.component';
 import { DatabasePruningComponent } from './pages/stats/database-pruning/database-pruning.component';
 import { FollowUpComponent } from './pages/stats/follow-up/follow-up.component';
+import { JsonStringifyPipe } from './pipes/json-stringify.pipe';
+import { CombineReasonsFeedbackPipe } from './pipes/combine-reasons-feedback.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FollowUpComponent } from './pages/stats/follow-up/follow-up.component';
     UserSessionComponent,
     EndpointsComponent,
     DatabasePruningComponent,
-    FollowUpComponent
+    FollowUpComponent,
+    JsonStringifyPipe,
+    CombineReasonsFeedbackPipe
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ export class DataComponent implements OnInit {
   userSessionDisplayedColumns: string[] = ['objectId', 'createdAt', 'fmd_id', 'session', 'endpoints', 'blueprints', 'monitoring_0', 'monitoring_1', 'monitoring_2', 'monitoring_3', 'dashboard_version', 'python_version', 'time_initialized'];
   databasePruningDisplayedColumns: string[] = ['objectId', 'createdAt', 'fmd_id', 'session', 'age_threshold_weeks', 'delete_custom_graphs'];
   endpointsDisplayedColumns: string[] = ['objectId', 'createdAt', 'name', 'fmd_id', 'session'];
-  followUpDisplayedColumns: string[] = ['objectId', 'createdAt', 'feedback'];
+  followUpDisplayedColumns: string[] = ['objectId', 'createdAt', 'reasonsFeedback'];
 
   userSessionDataSource = new MatTableDataSource<UserSession>();
   endpointsDataSource = new MatTableDataSource<Endpoints>();
@@ -68,6 +68,18 @@ export class DataComponent implements OnInit {
         if (this.activeDatabasePruningFilters[key]) {
           let searchValue = data[key as keyof DatabasePruning]?.toString().toLowerCase() || '';
           if (!searchValue.includes(this.activeDatabasePruningFilters[key])) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
+
+    this.followUpDataSource.filterPredicate = (data: FollowUp, filter: string) => {
+      for (const key in this.activeFollowUpFilters) {
+        if (this.activeFollowUpFilters[key]) {
+          let searchValue = data[key as keyof FollowUp]?.toString().toLowerCase() || '';
+          if (!searchValue.includes(this.activeFollowUpFilters[key])) {
             return false;
           }
         }
