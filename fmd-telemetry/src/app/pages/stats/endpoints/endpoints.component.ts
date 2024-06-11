@@ -99,22 +99,29 @@ export class EndpointsComponent implements OnInit {
 
   private processEndpointVisitsData(data: Endpoints[]): Array<{ category: string; value: number }> {
 
-    const excludedEndpoints = ['users', 'deploy_details', 'deploy_config'];
+    const excludedEndpoints = ['users', 'deploy_details', 'deploy_config', 'endpoint_info', 'endpoints_hits', 'profiled_table'];
+  
     const visitCounts = data
-      .filter(endpoint => !excludedEndpoints.includes(endpoint.name))
+      .filter(endpoint => {
+        // Exclude specific endpoints and those that match the pattern 'endpoint_info/*' or 'profiled_table/*' where '*' is a number
+        return !excludedEndpoints.includes(endpoint.name) &&
+               !/^endpoint_info\/\d+$/.test(endpoint.name) &&
+               !/^profiled_table\/\d+$/.test(endpoint.name);
+      })
       .reduce((acc: EndpointCounts, endpoint) => {
         // Replace digits and the word "None" with '*'
         const normalizedEndpoint = endpoint.name.replace(/\d+|None/g, '*');
         acc[normalizedEndpoint] = (acc[normalizedEndpoint] || 0) + 1;
         return acc;
       }, {} as EndpointCounts);
-
+  
     // Convert to array, sort by value in descending order, and take the top 10
     return Object.keys(visitCounts)
       .map(key => ({ category: key, value: visitCounts[key] }))
       .sort((a, b) => b.value - a.value) // Sort in descending order of value
       .slice(0, 10);
   }
+  
 
 
   private processEndpointStarVisitsData(data: Endpoints[]): Array<{ category: string; value: number }> {

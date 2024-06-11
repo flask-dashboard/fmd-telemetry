@@ -120,7 +120,7 @@ export class UserSessionComponent implements OnInit {
         yLabel: 'Average Count'
       });
 
-      this.createChart(this.chartContainer4, this.aggregateEndpointsAndBlueprints(data), {
+      this.createChart(this.chartContainer4, this.calculateAverageEndpointsAndBlueprints(data), {
         title: 'Average Endpoints and Blueprints',
         xLabel: 'Category',
         yLabel: 'Average Count'
@@ -238,6 +238,22 @@ export class UserSessionComponent implements OnInit {
     return [
       { category: 'Endpoints', value: totalEndpoints },
       { category: 'Blueprints', value: totalBlueprints }
+    ];
+  }
+
+  private calculateAverageEndpointsAndBlueprints(data: UserSession[]): any[] {
+    const total = data.length;
+    let totalEndpoints = 0;
+    let totalBlueprints = 0;
+
+    data.forEach(session => {
+      totalEndpoints += session.endpoints;
+      totalBlueprints += session.blueprints;
+    });
+
+    return [
+      { category: 'Endpoints', value: parseFloat((totalEndpoints / total).toFixed(2)) },
+      { category: 'Blueprints', value: parseFloat((totalBlueprints / total).toFixed(2)) }
     ];
   }
 
@@ -366,5 +382,4 @@ private getTop10PythonVersions(data: UserSession[]): any[] {
 
 
 }
-
 

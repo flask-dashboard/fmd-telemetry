@@ -26,39 +26,41 @@ export class D3Service {
     const margin = { top: 60, right: 10, bottom: 100, left: 70 };
     const width = (config.width || 500) - margin.left - margin.right;
     const height = (config.height || 300) - margin.top - margin.bottom;
-
+    const maxBarWidth = config.maxBarWidth || 40; // Maximum bar width
+  
     // Clear any existing SVG to avoid overlapping charts
     d3.select(element).select('svg').remove();
-
+  
     // Create an SVG container
     const svg = d3.select(element).append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
-
+  
     // Set up the X scale
     const x = d3.scaleBand()
-        .range([0, width])
-        .padding(0.1);
+      .range([0, width])
+      .padding(0.1);
     x.domain(data.map(d => d[config.xField]));
-
+  
     // Set up the Y scale using config.yField
     const y = d3.scaleLinear()
-        .range([height, 0]);
+      .range([height, 0]);
     y.domain([0, d3.max(data, d => d[config.yField])]);
-
+  
     const xAxisGroup = svg.append('g')
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(x));
-
+  
     // Rotate X-axis labels
     xAxisGroup.selectAll('text')
       .style('text-anchor', 'end')
       .attr('dx', '-.8em')
       .attr('dy', '.15em')
-      .attr('transform', 'rotate(-45)'); // Rotate labels by -45 degrees
-
+      .attr('transform', 'rotate(-45)')
+      .style('font-size', '12px'); // Increase font size
+  
     // X-axis label (if provided)
     if (config.xLabel) {
       xAxisGroup.append('text')
@@ -66,13 +68,14 @@ export class D3Service {
         .attr('x', width / 2)
         .attr('text-anchor', 'middle')
         .style('fill', 'black')
+        .style('font-size', '12px') // Increase font size
         .text(config.xLabel);
     }
-
+  
     // Add the Y Axis
     const yAxisGroup = svg.append('g')
       .call(d3.axisLeft(y));
-
+  
     // Y-axis label (if provided)
     if (config.yLabel) {
       yAxisGroup.append('text')
@@ -82,44 +85,53 @@ export class D3Service {
         .attr('dy', '1em')
         .attr('text-anchor', 'middle')
         .style('fill', 'black')
+        .style('font-size', '12px') // Increase font size
         .text(config.yLabel);
     }
-
+  
     // Create the bars with color
     svg.selectAll('.bar')
-        .data(data)
-        .enter().append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d[config.xField]) ?? 0)
-        .attr('width', x.bandwidth())
-        .attr('y', d => y(d[config.yField]) ?? 0)
-        .attr('height', d => height - (y(d[config.yField]) ?? 0))
-        .attr('fill', (d, i) => color(i.toString())?.toString() ?? 'green');
-
+      .data(data)
+      .enter().append('rect')
+      .attr('class', 'bar')
+      .attr('x', d => {
+        const xPos = x(d[config.xField]) ?? 0;
+        const barWidth = Math.min(x.bandwidth(), maxBarWidth);
+        return xPos + (x.bandwidth() - barWidth) / 2; // Center the bars
+      })
+      .attr('width', d => Math.min(x.bandwidth(), maxBarWidth)) // Set max width for bars
+      .attr('y', d => y(d[config.yField]) ?? 0)
+      .attr('height', d => height - (y(d[config.yField]) ?? 0))
+      .attr('fill', (d, i) => color(i.toString())?.toString() ?? 'green');
+  
     // Update text labels to use config.xField and config.yField
     svg.selectAll('.bar-text')
-        .data(data)
-        .enter().append('text')
-        .attr('class', 'bar-text')
-        .attr('text-anchor', 'middle')
-        .attr('x', d => (x(d[config.xField]) ?? 0) + x.bandwidth() / 2)
-        .attr('y', d => y(d[config.yField]) - 5)
-        .text(d => d[config.yField])
-        .style('fill', 'black')
-        .style('font-size', '12px');
-
-
+      .data(data)
+      .enter().append('text')
+      .attr('class', 'bar-text')
+      .attr('text-anchor', 'middle')
+      .attr('x', d => {
+        const xPos = x(d[config.xField]) ?? 0;
+        const barWidth = Math.min(x.bandwidth(), maxBarWidth);
+        return xPos + (x.bandwidth() - barWidth) / 2 + barWidth / 2; // Center the text on the bars
+      })
+      .attr('y', d => y(d[config.yField]) - 5)
+      .text(d => d[config.yField])
+      .style('fill', 'black')
+      .style('font-size', '12px'); // Increase font size
+  
     // Append a title (if provided)
     if (config.title) {
       svg.append('text')
         .attr('x', (width / 2))
         .attr('y', 0 - (margin.top / 2))
         .attr('text-anchor', 'middle')
-        .style('font-size', '20px')
+        .style('font-size', '20px') // Increase font size
         .style('text-decoration', 'underline')
         .text(config.title);
     }
   }
+  
 
 
   createLineChart(element: any, data: any[], config: any): void {
