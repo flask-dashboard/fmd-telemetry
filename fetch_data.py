@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+from datetime import datetime
 
 # Parse Server credentials
 # Reading the server IP and port from the file 'ip_address' in the same directory
@@ -21,7 +22,12 @@ headers = {
     'Content-Type': 'application/json'
 }
 
-# Function to fetch and save collection data with pagination
+def format_id_from_date(date_str):
+    """ Convert ISO date string to a simplified ID format. """
+    date = datetime.fromisoformat(date_str.replace('Z', '+00:00'))
+    return date.strftime('%Y%m%d%H%M%S')
+
+# Function to fetch, modify, and save collection data with pagination
 def fetch_and_save(class_name, file_path):
     limit = 100  # Maximum number of items per page
     skip = 0     # Offset to start fetching the data
@@ -34,7 +40,19 @@ def fetch_and_save(class_name, file_path):
         response.raise_for_status()  # Raise an error if the request fails
         data = response.json()["results"]
         
-        all_data.extend(data)
+        for item in data:
+            # Create a new item with specific order for objectId, createdAt, updatedAt
+            new_item = {
+                'objectId': item.get('originalId', item.get('objectId')),
+                'createdAt': item.get('originalCreatedAt', {'iso': item.get('createdAt')}).get('iso'),
+                'updatedAt': item.get('originalUpdatedAt', {'iso': item.get('updatedAt')}).get('iso')
+            }
+
+            # Add other fields from the original item, excluding the original and overridden fields
+            other_fields = {k: v for k, v in item.items() if k not in ['originalId', 'originalCreatedAt', 'originalUpdatedAt', 'objectId', 'createdAt', 'updatedAt']}
+            new_item.update(other_fields)  # This maintains the order by adding new keys after the specified ones
+            
+            all_data.append(new_item)
         
         if len(data) < limit:
             # If fewer items are returned than the limit, assume it's the last page

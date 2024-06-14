@@ -209,15 +209,28 @@ async function migrateData(classes) {
                         const newObj = new NewClass();
 
                         for (const key in record) {
-                            if (!["objectId", "createdAt", "updatedAt", "className"].includes(key)) {
-                                newObj.set(key, record[key]);
+                            if (!["objectId", "className"].includes(key)) {
+                                if (key === 'createdAt' || key === 'updatedAt') {
+                                    // Ensure the date is parsed correctly
+                                    const originalDate = record[key].iso ? new Date(record[key].iso) : new Date(record[key]);
+                                    const dateKey = 'original' + key.charAt(0).toUpperCase() + key.slice(1); // Creates 'originalCreatedAt' or 'originalUpdatedAt'
+                                    newObj.set(dateKey, originalDate);
+                                } else {
+                                    newObj.set(key, record[key]);
+                                }
                             }
                         }
 
-                        await newObj.save();
-                    }
+                        // Set the original ID from old database
+                        newObj.set('originalId', record.objectId);
 
-                    logger.info(`Migrated ${records.length} records for class ${className}.`);
+                        try {
+                            await newObj.save();
+                            logger.info(`Migrated record with new ID ${newObj.id} for class ${className}.`);
+                        } catch (error) {
+                            logger.error(`Error saving record for class ${className}: ${error.message}`);
+                        }
+                    }
 
                     // Check if there are more records to fetch
                     if (records.length < limit) {
