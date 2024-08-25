@@ -232,5 +232,14 @@
     "session": 1,
     "age_threshold_weeks": 150,
     "delete_custom_graphs": false
+  },
+  {
+    "objectId": "ejSZDJhxk0",
+    "createdAt": "2024-08-20T12:41:58.095Z",
+    "updatedAt": "2024-08-20T12:41:58.095Z",
+    "fmd_id": "f1ad07ae-99b6-4c96-b305-da150f357d75",
+    "session": 1,
+    "age_threshold_weeks": 1,
+    "delete_custom_graphs": false
   }
 ]
