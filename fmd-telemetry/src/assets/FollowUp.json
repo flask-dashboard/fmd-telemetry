@@ -6674,5 +6674,99 @@
     "fmd_id": "5093257f-a25d-4a23-9c4e-8efd83894dc1",
     "session": 5,
     "feedback": []
+  },
+  {
+    "objectId": "IpGpbdkrzS",
+    "createdAt": "2024-12-01T20:38:26.131Z",
+    "updatedAt": "2024-12-01T20:38:26.131Z",
+    "fmd_id": "",
+    "session": 0,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "bHfbIiIJlO",
+    "createdAt": "2024-12-03T06:14:56.954Z",
+    "updatedAt": "2024-12-03T06:14:56.954Z",
+    "fmd_id": "a9de2977-93a1-48c9-80ce-e71244c51a7f",
+    "session": 1,
+    "feedback": []
+  },
+  {
+    "objectId": "xHJYGTV8wn",
+    "createdAt": "2024-12-03T11:02:56.640Z",
+    "updatedAt": "2024-12-03T11:02:56.640Z",
+    "fmd_id": "36c6ddba-9ffb-418f-9031-3ad23dcd72c4",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "Psl7I77o32",
+    "createdAt": "2024-12-04T06:49:56.527Z",
+    "updatedAt": "2024-12-04T06:49:56.527Z",
+    "fmd_id": "78d3ed46-0f7e-4770-9196-f5fe54f4d557",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "other",
+        "other_reason": "other"
+      }
+    ]
+  },
+  {
+    "objectId": "skd3l1jon6",
+    "createdAt": "2024-12-04T07:13:56.901Z",
+    "updatedAt": "2024-12-04T07:13:56.901Z",
+    "fmd_id": "78d3ed46-0f7e-4770-9196-f5fe54f4d557",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "other",
+        "other_reason": "1"
+      }
+    ]
+  },
+  {
+    "objectId": "EuZoPEDnKo",
+    "createdAt": "2024-12-05T21:17:24.596Z",
+    "updatedAt": "2024-12-05T21:17:24.596Z",
+    "fmd_id": "be5c5d93-9bb1-4e54-87db-c46a806a7730",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "9uxhHg9ErT",
+    "createdAt": "2024-12-05T23:22:40.413Z",
+    "updatedAt": "2024-12-05T23:22:40.413Z",
+    "fmd_id": "14f0cf96-969f-47ef-9255-285b0a4b8cb5",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "IDhbBY5g5K",
+    "createdAt": "2024-12-06T17:27:34.365Z",
+    "updatedAt": "2024-12-06T17:27:34.365Z",
+    "fmd_id": "3e856970-9635-44ba-a677-6a77d8fc0794",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
   }
 ]
