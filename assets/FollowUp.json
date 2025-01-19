@@ -7258,5 +7258,218 @@
         "key": "privacy"
       }
     ]
+  },
+  {
+    "objectId": "afZKJM3eLy",
+    "createdAt": "2025-01-16T10:57:35.050Z",
+    "updatedAt": "2025-01-16T10:57:35.050Z",
+    "fmd_id": "67bc1bc6-580e-4aa2-96d4-d624a8d8b7ed",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "d8xNsTalDf",
+    "createdAt": "2025-01-16T13:41:01.242Z",
+    "updatedAt": "2025-01-16T13:41:01.242Z",
+    "fmd_id": "16c07466-13db-4886-8bfc-c506a19476e9",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "VRF6ZvDSPk",
+    "createdAt": "2025-01-16T13:55:59.847Z",
+    "updatedAt": "2025-01-16T13:55:59.847Z",
+    "fmd_id": "d4d626e1-42ee-48fe-b5a2-3968caf8bd6d",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "kFXXzUX4uF",
+    "createdAt": "2025-01-16T14:07:47.466Z",
+    "updatedAt": "2025-01-16T14:07:47.466Z",
+    "fmd_id": "2cb37fbe-8cf0-4924-b2b6-dbbcb5123d2e",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "lO7nFttckt",
+    "createdAt": "2025-01-16T14:31:40.928Z",
+    "updatedAt": "2025-01-16T14:31:40.928Z",
+    "fmd_id": "2cb37fbe-8cf0-4924-b2b6-dbbcb5123d2e",
+    "session": 2,
+    "feedback": []
+  },
+  {
+    "objectId": "A37uruUMhC",
+    "createdAt": "2025-01-16T14:39:53.103Z",
+    "updatedAt": "2025-01-16T14:39:53.103Z",
+    "fmd_id": "66930621-f9e2-465d-b420-354f6254464f",
+    "session": 3,
+    "feedback": [
+      {
+        "key": "other",
+        "other_reason": "I can't disable telemetry from a config function and under configuration \"agree\" is always on"
+      }
+    ]
+  },
+  {
+    "objectId": "9mfBswIBEE",
+    "createdAt": "2025-01-16T14:55:45.859Z",
+    "updatedAt": "2025-01-16T14:55:45.859Z",
+    "fmd_id": "66930621-f9e2-465d-b420-354f6254464f",
+    "session": 6,
+    "feedback": [
+      {
+        "key": "privacy"
+      },
+      {
+        "key": "performance"
+      },
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "4rzJNcSkr4",
+    "createdAt": "2025-01-16T14:56:24.146Z",
+    "updatedAt": "2025-01-16T14:56:24.146Z",
+    "fmd_id": "66930621-f9e2-465d-b420-354f6254464f",
+    "session": 7,
+    "feedback": [
+      {
+        "key": "performance"
+      }
+    ]
+  },
+  {
+    "objectId": "D3SZEhEla9",
+    "createdAt": "2025-01-16T15:13:55.641Z",
+    "updatedAt": "2025-01-16T15:13:55.641Z",
+    "fmd_id": "66930621-f9e2-465d-b420-354f6254464f",
+    "session": 8,
+    "feedback": [
+      {
+        "key": "privacy"
+      },
+      {
+        "key": "performance"
+      },
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "nfI68Sbxjh",
+    "createdAt": "2025-01-16T17:31:51.129Z",
+    "updatedAt": "2025-01-16T17:31:51.129Z",
+    "fmd_id": "b7a33a3c-3c99-4148-9791-06e4168a6d79",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "igfFrlnMkc",
+    "createdAt": "2025-01-16T17:36:21.199Z",
+    "updatedAt": "2025-01-16T17:36:21.199Z",
+    "fmd_id": "b7a33a3c-3c99-4148-9791-06e4168a6d79",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "ZvNKX4Ecfd",
+    "createdAt": "2025-01-16T17:44:51.561Z",
+    "updatedAt": "2025-01-16T17:44:51.561Z",
+    "fmd_id": "d7a54aab-651d-4357-b83a-90b9e42df3ac",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "EfcgiBK6ob",
+    "createdAt": "2025-01-16T17:51:20.579Z",
+    "updatedAt": "2025-01-16T17:51:20.579Z",
+    "fmd_id": "1ea6b634-05f5-4067-b94c-e8064254f94a",
+    "session": 1,
+    "feedback": []
+  },
+  {
+    "objectId": "7dIxKem0BS",
+    "createdAt": "2025-01-16T17:55:30.235Z",
+    "updatedAt": "2025-01-16T17:55:30.235Z",
+    "fmd_id": "1ea6b634-05f5-4067-b94c-e8064254f94a",
+    "session": 2,
+    "feedback": []
+  },
+  {
+    "objectId": "RNTl5HeewE",
+    "createdAt": "2025-01-17T04:22:45.357Z",
+    "updatedAt": "2025-01-17T04:22:45.357Z",
+    "fmd_id": "85a0a076-cc06-4565-9b1e-607554162a64",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "6S1NLlo8rO",
+    "createdAt": "2025-01-17T09:55:58.302Z",
+    "updatedAt": "2025-01-17T09:55:58.302Z",
+    "fmd_id": "66930621-f9e2-465d-b420-354f6254464f",
+    "session": 10,
+    "feedback": []
+  },
+  {
+    "objectId": "59WJVURTjs",
+    "createdAt": "2025-01-17T10:22:39.671Z",
+    "updatedAt": "2025-01-17T10:22:39.671Z",
+    "fmd_id": "42a5b364-24a7-447e-abf5-13f2a1e89e39",
+    "session": 1,
+    "feedback": []
+  },
+  {
+    "objectId": "s2X7dLroCo",
+    "createdAt": "2025-01-17T10:59:51.950Z",
+    "updatedAt": "2025-01-17T10:59:51.950Z",
+    "fmd_id": "42a5b364-24a7-447e-abf5-13f2a1e89e39",
+    "session": 4,
+    "feedback": []
+  },
+  {
+    "objectId": "Jzqo2rRtKT",
+    "createdAt": "2025-01-17T11:25:44.222Z",
+    "updatedAt": "2025-01-17T11:25:44.222Z",
+    "fmd_id": "42a5b364-24a7-447e-abf5-13f2a1e89e39",
+    "session": 5,
+    "feedback": []
   }
 ]
