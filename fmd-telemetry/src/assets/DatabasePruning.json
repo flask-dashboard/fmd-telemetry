@@ -412,5 +412,14 @@
     "session": 3,
     "age_threshold_weeks": 10,
     "delete_custom_graphs": false
+  },
+  {
+    "objectId": "j4zrKnc0QF",
+    "createdAt": "2025-03-19T13:08:10.183Z",
+    "updatedAt": "2025-03-19T13:08:10.183Z",
+    "fmd_id": "acb66821-1f61-4e87-bb38-f1f21acc2945",
+    "session": 3,
+    "age_threshold_weeks": 1,
+    "delete_custom_graphs": false
   }
 ]
