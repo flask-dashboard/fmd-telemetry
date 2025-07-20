@@ -502,5 +502,32 @@
     "session": 84,
     "age_threshold_weeks": 1,
     "delete_custom_graphs": false
+  },
+  {
+    "objectId": "t2FxJ0eKjj",
+    "createdAt": "2025-07-13T06:07:38.229Z",
+    "updatedAt": "2025-07-13T06:07:38.229Z",
+    "fmd_id": "834a4dee-b727-43ca-8cb5-c995bad0fd47",
+    "session": 1,
+    "age_threshold_weeks": 36500,
+    "delete_custom_graphs": false
+  },
+  {
+    "objectId": "MEHwDiNZ5t",
+    "createdAt": "2025-07-13T09:57:41.667Z",
+    "updatedAt": "2025-07-13T09:57:41.667Z",
+    "fmd_id": "1f10a08d-9ed9-428c-a565-1dae78c91f3f",
+    "session": 1,
+    "age_threshold_weeks": 540,
+    "delete_custom_graphs": false
+  },
+  {
+    "objectId": "cGATzW4bhf",
+    "createdAt": "2025-07-18T10:45:55.247Z",
+    "updatedAt": "2025-07-18T10:45:55.247Z",
+    "fmd_id": "f7756cc1-c1c3-441c-a15d-f3fc0fb9b637",
+    "session": 5,
+    "age_threshold_weeks": 1,
+    "delete_custom_graphs": true
   }
 ]
