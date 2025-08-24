@@ -529,5 +529,32 @@
     "session": 5,
     "age_threshold_weeks": 1,
     "delete_custom_graphs": true
+  },
+  {
+    "objectId": "WQtlEGqE3c",
+    "createdAt": "2025-08-21T07:13:29.333Z",
+    "updatedAt": "2025-08-21T07:13:29.333Z",
+    "fmd_id": "9caef165-1493-4b3a-9027-e0873845cbd3",
+    "session": 3,
+    "age_threshold_weeks": 4,
+    "delete_custom_graphs": false
+  },
+  {
+    "objectId": "NNppPHHKZJ",
+    "createdAt": "2025-08-21T07:25:03.760Z",
+    "updatedAt": "2025-08-21T07:25:03.760Z",
+    "fmd_id": "9caef165-1493-4b3a-9027-e0873845cbd3",
+    "session": 6,
+    "age_threshold_weeks": 0,
+    "delete_custom_graphs": false
+  },
+  {
+    "objectId": "DIAFKLYqEH",
+    "createdAt": "2025-08-23T02:11:44.247Z",
+    "updatedAt": "2025-08-23T02:11:44.247Z",
+    "fmd_id": "9caef165-1493-4b3a-9027-e0873845cbd3",
+    "session": 15,
+    "age_threshold_weeks": 0,
+    "delete_custom_graphs": false
   }
 ]
