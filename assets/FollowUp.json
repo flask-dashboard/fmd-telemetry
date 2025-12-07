@@ -10625,5 +10625,55 @@
     "fmd_id": "bef98e39-9623-43d9-a8d6-157a987f2a82",
     "session": 2,
     "feedback": []
+  },
+  {
+    "objectId": "HBWYLsgstq",
+    "createdAt": "2025-12-02T03:12:26.924Z",
+    "updatedAt": "2025-12-02T03:12:26.924Z",
+    "fmd_id": "",
+    "session": 0,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "OtNGHtUpgj",
+    "createdAt": "2025-12-02T20:14:13.236Z",
+    "updatedAt": "2025-12-02T20:14:13.236Z",
+    "fmd_id": "5ffed7fd-8446-46f0-a567-608a4f1c6eb1",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      },
+      {
+        "key": "trust"
+      },
+      {
+        "key": "other",
+        "other_reason": "just testing and haven't had time to audit yet"
+      }
+    ]
+  },
+  {
+    "objectId": "4Bob5eYVAt",
+    "createdAt": "2025-12-03T15:57:40.412Z",
+    "updatedAt": "2025-12-03T15:57:40.412Z",
+    "fmd_id": "5ffed7fd-8446-46f0-a567-608a4f1c6eb1",
+    "session": 4,
+    "feedback": [
+      {
+        "key": "privacy"
+      },
+      {
+        "key": "trust"
+      },
+      {
+        "key": "other",
+        "other_reason": "have not had time to audit yet. very annoying that there's seemingly no way to stop this from popping up. https://github.com/flask-dashboard/Flask-MonitoringDashboard/issues/445#issuecomment-1893802964\n\nIf someone is potentially trying to demo/sell the idea of using flask-monitoringdashboard to colleagues, it's really annoying to have this keep popping up."
+      }
+    ]
   }
 ]
