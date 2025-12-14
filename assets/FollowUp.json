@@ -10675,5 +10675,97 @@
         "other_reason": "have not had time to audit yet. very annoying that there's seemingly no way to stop this from popping up. https://github.com/flask-dashboard/Flask-MonitoringDashboard/issues/445#issuecomment-1893802964\n\nIf someone is potentially trying to demo/sell the idea of using flask-monitoringdashboard to colleagues, it's really annoying to have this keep popping up."
       }
     ]
+  },
+  {
+    "objectId": "jF7WrwAPOB",
+    "createdAt": "2025-12-09T11:00:46.910Z",
+    "updatedAt": "2025-12-09T11:00:46.910Z",
+    "fmd_id": "b689cefe-102a-4788-baff-869cae3f0ec3",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "uywi0hX1jk",
+    "createdAt": "2025-12-10T14:41:47.347Z",
+    "updatedAt": "2025-12-10T14:41:47.347Z",
+    "fmd_id": "3adaef69-4014-4e68-adee-0fc85a0b6eff",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "oUToeurRZB",
+    "createdAt": "2025-12-10T15:16:00.968Z",
+    "updatedAt": "2025-12-10T15:16:00.968Z",
+    "fmd_id": "cec5c996-3e5d-4fe3-8fd2-dfa599ecebbe",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "JYX4Eh0gmU",
+    "createdAt": "2025-12-10T18:21:01.072Z",
+    "updatedAt": "2025-12-10T18:21:01.072Z",
+    "fmd_id": "b01662c1-81e5-4dcf-9941-a2f3d333c8d6",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "H0tldgvbQ6",
+    "createdAt": "2025-12-10T18:25:11.884Z",
+    "updatedAt": "2025-12-10T18:25:11.884Z",
+    "fmd_id": "",
+    "session": 0,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "kw2yU7V6FE",
+    "createdAt": "2025-12-10T18:37:35.782Z",
+    "updatedAt": "2025-12-10T18:37:35.782Z",
+    "fmd_id": "b01662c1-81e5-4dcf-9941-a2f3d333c8d6",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "jupTdwgxYn",
+    "createdAt": "2025-12-11T07:13:49.927Z",
+    "updatedAt": "2025-12-11T07:13:49.927Z",
+    "fmd_id": "9853e764-8254-42f0-9b88-36e199f594d0",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "zrytLIl385",
+    "createdAt": "2025-12-13T21:28:25.640Z",
+    "updatedAt": "2025-12-13T21:28:25.640Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 9,
+    "feedback": []
   }
 ]
