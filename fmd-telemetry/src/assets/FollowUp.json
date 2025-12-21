@@ -10767,5 +10767,162 @@
     "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
     "session": 9,
     "feedback": []
+  },
+  {
+    "objectId": "oMfHlQ61rv",
+    "createdAt": "2025-12-14T02:38:20.267Z",
+    "updatedAt": "2025-12-14T02:38:20.267Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 10,
+    "feedback": []
+  },
+  {
+    "objectId": "D5FD4GdfIW",
+    "createdAt": "2025-12-14T02:59:09.835Z",
+    "updatedAt": "2025-12-14T02:59:09.835Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 11,
+    "feedback": []
+  },
+  {
+    "objectId": "noYPBXLuFT",
+    "createdAt": "2025-12-14T07:51:57.673Z",
+    "updatedAt": "2025-12-14T07:51:57.673Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 12,
+    "feedback": []
+  },
+  {
+    "objectId": "Meev64IkGO",
+    "createdAt": "2025-12-14T11:12:13.319Z",
+    "updatedAt": "2025-12-14T11:12:13.319Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 14,
+    "feedback": []
+  },
+  {
+    "objectId": "tdbQgOpP4D",
+    "createdAt": "2025-12-14T11:14:57.692Z",
+    "updatedAt": "2025-12-14T11:14:57.692Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 15,
+    "feedback": []
+  },
+  {
+    "objectId": "ioSMHuBkgy",
+    "createdAt": "2025-12-14T11:37:24.701Z",
+    "updatedAt": "2025-12-14T11:37:24.701Z",
+    "fmd_id": "3145a905-8f61-49c4-b812-aa96888ae76f",
+    "session": 17,
+    "feedback": []
+  },
+  {
+    "objectId": "6cxgqzMPcx",
+    "createdAt": "2025-12-14T13:31:20.067Z",
+    "updatedAt": "2025-12-14T13:31:20.067Z",
+    "fmd_id": "8441e887-dccd-4c2c-8abb-17969be3a227",
+    "session": 1,
+    "feedback": []
+  },
+  {
+    "objectId": "JUAWseL67C",
+    "createdAt": "2025-12-15T12:48:25.596Z",
+    "updatedAt": "2025-12-15T12:48:25.596Z",
+    "fmd_id": "46aab643-61f0-4b88-a300-fa3e563bdf9c",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "Rsx0vfrQIw",
+    "createdAt": "2025-12-15T12:57:58.615Z",
+    "updatedAt": "2025-12-15T12:57:58.615Z",
+    "fmd_id": "46aab643-61f0-4b88-a300-fa3e563bdf9c",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "7QnNTsa5nW",
+    "createdAt": "2025-12-15T13:15:33.911Z",
+    "updatedAt": "2025-12-15T13:15:33.911Z",
+    "fmd_id": "46aab643-61f0-4b88-a300-fa3e563bdf9c",
+    "session": 5,
+    "feedback": []
+  },
+  {
+    "objectId": "jV41eM4usH",
+    "createdAt": "2025-12-15T16:17:02.296Z",
+    "updatedAt": "2025-12-15T16:17:02.296Z",
+    "fmd_id": "",
+    "session": 0,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "AjQNVWlbzK",
+    "createdAt": "2025-12-15T16:17:14.976Z",
+    "updatedAt": "2025-12-15T16:17:14.976Z",
+    "fmd_id": "153d6c84-6106-40fb-b3c5-d24191338203",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "cOEc6YWmYA",
+    "createdAt": "2025-12-15T16:19:31.720Z",
+    "updatedAt": "2025-12-15T16:19:31.720Z",
+    "fmd_id": "153d6c84-6106-40fb-b3c5-d24191338203",
+    "session": 1,
+    "feedback": [
+      {
+        "key": "trust"
+      }
+    ]
+  },
+  {
+    "objectId": "cPDzLs5bpG",
+    "createdAt": "2025-12-17T14:05:46.340Z",
+    "updatedAt": "2025-12-17T14:05:46.340Z",
+    "fmd_id": "153d6c84-6106-40fb-b3c5-d24191338203",
+    "session": 3,
+    "feedback": [
+      {
+        "key": "other",
+        "other_reason": "stop showing me the telemetry button"
+      }
+    ]
+  },
+  {
+    "objectId": "0KP9a8CwJ9",
+    "createdAt": "2025-12-18T11:44:56.132Z",
+    "updatedAt": "2025-12-18T11:44:56.132Z",
+    "fmd_id": "ce8614b3-956c-4a9b-8d7d-78c6eb7d1f8a",
+    "session": 2,
+    "feedback": [
+      {
+        "key": "privacy"
+      }
+    ]
+  },
+  {
+    "objectId": "SOngGBR39r",
+    "createdAt": "2025-12-18T14:53:41.793Z",
+    "updatedAt": "2025-12-18T14:53:41.793Z",
+    "fmd_id": "83a57c71-64fc-4dbf-a1df-4afe3d7d853e",
+    "session": 1,
+    "feedback": []
   }
 ]
