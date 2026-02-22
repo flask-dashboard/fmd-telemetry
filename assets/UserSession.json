@@ -55759,5 +55759,53 @@
     "monitoring_3": 0,
     "dashboard_version": "5.0.2",
     "python_version": "3.12.3 (main, Jan 22 2026, 20:57:42) [GCC 13.3.0]"
+  },
+  {
+    "objectId": "sDhlsKYJWf",
+    "createdAt": "2026-02-20T08:07:23.463Z",
+    "updatedAt": "2026-02-20T08:07:23.463Z",
+    "fmd_id": "a13c4550-b9ca-4ff6-b1a0-dbee11f392c8",
+    "session": 2,
+    "endpoints": 0,
+    "blueprints": 0,
+    "time_initialized": "2026-02-20 08:06:40",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]"
+  },
+  {
+    "objectId": "p7AtEaxoqh",
+    "createdAt": "2026-02-20T11:00:48.331Z",
+    "updatedAt": "2026-02-20T11:00:48.331Z",
+    "fmd_id": "a13c4550-b9ca-4ff6-b1a0-dbee11f392c8",
+    "session": 3,
+    "endpoints": 0,
+    "blueprints": 0,
+    "time_initialized": "2026-02-20 11:00:26",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]"
+  },
+  {
+    "objectId": "FnmUA3dOo1",
+    "createdAt": "2026-02-20T11:13:00.491Z",
+    "updatedAt": "2026-02-20T11:13:00.491Z",
+    "fmd_id": "a13c4550-b9ca-4ff6-b1a0-dbee11f392c8",
+    "session": 4,
+    "endpoints": 0,
+    "blueprints": 0,
+    "time_initialized": "2026-02-20 11:12:59",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]"
   }
 ]
