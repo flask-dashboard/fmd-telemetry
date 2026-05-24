@@ -58223,5 +58223,37 @@
     "monitoring_3": 54,
     "dashboard_version": "5.0.2",
     "python_version": "3.11.15 (main, Apr  7 2026, 02:24:41) [GCC 14.2.0]"
+  },
+  {
+    "objectId": "FFSyvB3lvm",
+    "createdAt": "2026-05-20T21:04:49.471Z",
+    "updatedAt": "2026-05-20T21:04:49.471Z",
+    "fmd_id": "fc00079b-0f8f-4981-aa34-1aaaade68403",
+    "session": 9,
+    "endpoints": 45,
+    "blueprints": 45,
+    "time_initialized": "2026-05-20 21:04:49",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 45,
+    "dashboard_version": "3.3.2",
+    "python_version": "3.9.22 (main, Apr 29 2025, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)]"
+  },
+  {
+    "objectId": "KBTeyT14dr",
+    "createdAt": "2026-05-22T02:01:38.286Z",
+    "updatedAt": "2026-05-22T02:01:38.286Z",
+    "fmd_id": "09078a20-1422-4db9-bf7d-31c5ea8ca5d4",
+    "session": 3,
+    "endpoints": 3,
+    "blueprints": 3,
+    "time_initialized": "2026-05-22 02:01:36",
+    "monitoring_0": 0,
+    "monitoring_1": 3,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]"
   }
 ]
