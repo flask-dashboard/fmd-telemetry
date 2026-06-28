@@ -727,5 +727,23 @@
     "session": 1,
     "age_threshold_weeks": 100,
     "delete_custom_graphs": false
+  },
+  {
+    "objectId": "EbWzgP3glB",
+    "createdAt": "2026-06-23T16:43:24.966Z",
+    "updatedAt": "2026-06-23T16:43:24.966Z",
+    "fmd_id": "11fe3f58-cd71-4dcf-80dc-45add6d4ab3c",
+    "session": 6,
+    "age_threshold_weeks": 1,
+    "delete_custom_graphs": true
+  },
+  {
+    "objectId": "XFacBhk0uj",
+    "createdAt": "2026-06-23T16:46:27.503Z",
+    "updatedAt": "2026-06-23T16:46:27.503Z",
+    "fmd_id": "11fe3f58-cd71-4dcf-80dc-45add6d4ab3c",
+    "session": 6,
+    "age_threshold_weeks": 0,
+    "delete_custom_graphs": false
   }
 ]
