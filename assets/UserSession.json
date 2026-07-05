@@ -58991,5 +58991,21 @@
     "monitoring_3": 45,
     "dashboard_version": "3.3.2",
     "python_version": "3.9.22 (main, Apr 29 2025, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)]"
+  },
+  {
+    "objectId": "C7AawRFFSf",
+    "createdAt": "2026-07-01T20:00:53.274Z",
+    "updatedAt": "2026-07-01T20:00:53.274Z",
+    "fmd_id": "7053dc9c-59ab-4f30-ad1c-73838e018ec4",
+    "session": 2,
+    "endpoints": 23,
+    "blueprints": 9,
+    "time_initialized": "2026-07-01 20:00:52",
+    "monitoring_0": 0,
+    "monitoring_1": 23,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.12.13 (main, Jun 24 2026, 02:08:01) [GCC 14.2.0]"
   }
 ]
