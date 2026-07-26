@@ -59103,5 +59103,37 @@
     "monitoring_3": 0,
     "dashboard_version": "3.3.2",
     "python_version": "3.12.7 (main, Jun 18 2025, 13:16:51) [GCC 14.2.0]"
+  },
+  {
+    "objectId": "DUaOqLFDjB",
+    "createdAt": "2026-07-19T08:57:15.728Z",
+    "updatedAt": "2026-07-19T08:57:15.728Z",
+    "fmd_id": "83cfd063-707e-46f8-b60a-c28d365cd819",
+    "session": 15,
+    "endpoints": 88,
+    "blueprints": 7,
+    "time_initialized": "2026-07-19 08:57:13",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 25,
+    "monitoring_3": 63,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.11.6 (main, Apr 10 2024, 17:26:07) [GCC 13.2.0]"
+  },
+  {
+    "objectId": "Jo8wukJl3j",
+    "createdAt": "2026-07-19T08:57:57.355Z",
+    "updatedAt": "2026-07-19T08:57:57.355Z",
+    "fmd_id": "83cfd063-707e-46f8-b60a-c28d365cd819",
+    "session": 16,
+    "endpoints": 88,
+    "blueprints": 7,
+    "time_initialized": "2026-07-19 08:57:57",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 25,
+    "monitoring_3": 63,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.11.6 (main, Apr 10 2024, 17:26:07) [GCC 13.2.0]"
   }
 ]
