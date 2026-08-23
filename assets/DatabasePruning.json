@@ -745,5 +745,23 @@
     "session": 6,
     "age_threshold_weeks": 0,
     "delete_custom_graphs": false
+  },
+  {
+    "objectId": "JDDUJHgXgC",
+    "createdAt": "2026-08-19T13:37:13.716Z",
+    "updatedAt": "2026-08-19T13:37:13.716Z",
+    "fmd_id": "c4531210-9dfb-40bd-8669-34e56b4b5b9b",
+    "session": 1,
+    "age_threshold_weeks": 0,
+    "delete_custom_graphs": true
+  },
+  {
+    "objectId": "kIg7fnvocZ",
+    "createdAt": "2026-08-19T13:49:14.267Z",
+    "updatedAt": "2026-08-19T13:49:14.267Z",
+    "fmd_id": "edge-init",
+    "session": 5,
+    "age_threshold_weeks": 0,
+    "delete_custom_graphs": true
   }
 ]
