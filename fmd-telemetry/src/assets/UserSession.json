@@ -59423,5 +59423,53 @@
     "monitoring_3": 90,
     "dashboard_version": "4.0.2",
     "python_version": "3.10.14 (main, Sep  4 2024, 23:13:14) [GCC 12.2.0]"
+  },
+  {
+    "objectId": "J205uneNz7",
+    "createdAt": "2026-08-31T09:21:44.818Z",
+    "updatedAt": "2026-08-31T09:21:44.818Z",
+    "fmd_id": "95aae6c5-b3cf-4037-825b-048658a1f0eb",
+    "session": 76,
+    "endpoints": 90,
+    "blueprints": 17,
+    "time_initialized": "2026-08-31 09:21:42",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 90,
+    "dashboard_version": "4.0.2",
+    "python_version": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]"
+  },
+  {
+    "objectId": "3viZLczEYk",
+    "createdAt": "2026-09-02T06:17:29.771Z",
+    "updatedAt": "2026-09-02T06:17:29.771Z",
+    "fmd_id": "95aae6c5-b3cf-4037-825b-048658a1f0eb",
+    "session": 77,
+    "endpoints": 90,
+    "blueprints": 17,
+    "time_initialized": "2026-09-02 06:17:22",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 90,
+    "dashboard_version": "4.0.2",
+    "python_version": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]"
+  },
+  {
+    "objectId": "wU2y0SEET1",
+    "createdAt": "2026-09-02T06:46:24.734Z",
+    "updatedAt": "2026-09-02T06:46:24.734Z",
+    "fmd_id": "95aae6c5-b3cf-4037-825b-048658a1f0eb",
+    "session": 78,
+    "endpoints": 91,
+    "blueprints": 17,
+    "time_initialized": "2026-09-02 06:46:17",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 91,
+    "dashboard_version": "4.0.2",
+    "python_version": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]"
   }
 ]
