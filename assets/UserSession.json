@@ -59551,5 +59551,37 @@
     "monitoring_3": 45,
     "dashboard_version": "3.3.2",
     "python_version": "3.9.22 (main, Apr 29 2025, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)]"
+  },
+  {
+    "objectId": "oQFsxAIV20",
+    "createdAt": "2026-09-25T11:34:24.243Z",
+    "updatedAt": "2026-09-25T11:34:24.243Z",
+    "fmd_id": "6d3188ea-6f90-4645-a530-5b4ec4025561",
+    "session": 2,
+    "endpoints": 1,
+    "blueprints": 1,
+    "time_initialized": "2026-09-25 11:34:24",
+    "monitoring_0": 0,
+    "monitoring_1": 1,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.12.14 (main, Sep 19 2026, 03:36:28) [GCC 12.2.0]"
+  },
+  {
+    "objectId": "iuzRv0iyCt",
+    "createdAt": "2026-09-25T14:37:40.297Z",
+    "updatedAt": "2026-09-25T14:37:40.297Z",
+    "fmd_id": "b916da9d-b006-493e-b89a-b2f2c15a26b8",
+    "session": 12,
+    "endpoints": 39,
+    "blueprints": 10,
+    "time_initialized": "2026-09-25 14:37:37",
+    "monitoring_0": 0,
+    "monitoring_1": 39,
+    "monitoring_2": 0,
+    "monitoring_3": 0,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]"
   }
 ]

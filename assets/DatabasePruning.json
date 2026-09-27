@@ -772,5 +772,14 @@
     "session": 0,
     "age_threshold_weeks": 1,
     "delete_custom_graphs": false
+  },
+  {
+    "objectId": "xFuJlvcv9p",
+    "createdAt": "2026-09-25T13:38:36.848Z",
+    "updatedAt": "2026-09-25T13:38:36.848Z",
+    "fmd_id": "",
+    "session": 0,
+    "age_threshold_weeks": 0,
+    "delete_custom_graphs": true
   }
 ]
