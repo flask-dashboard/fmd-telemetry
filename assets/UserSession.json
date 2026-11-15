@@ -60687,5 +60687,37 @@
     "monitoring_3": 108,
     "dashboard_version": "5.1.0",
     "python_version": "3.12.15 (main, Oct  6 2026, 02:02:22) [GCC 14.2.0]"
+  },
+  {
+    "objectId": "AfI7dNsoER",
+    "createdAt": "2026-11-12T15:05:39.852Z",
+    "updatedAt": "2026-11-12T15:05:39.852Z",
+    "fmd_id": "e3757580-2d66-4e76-a118-0748592b66b9",
+    "session": 16,
+    "endpoints": 16,
+    "blueprints": 5,
+    "time_initialized": "2026-11-12 15:05:38",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 16,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.11.9 (main, Dec  9 2024, 00:00:00) [GCC 11.5.0 20240719 (Red Hat 11.5.0-2)]"
+  },
+  {
+    "objectId": "rpTvUx5ThV",
+    "createdAt": "2026-11-12T17:21:32.034Z",
+    "updatedAt": "2026-11-12T17:21:32.034Z",
+    "fmd_id": "e3757580-2d66-4e76-a118-0748592b66b9",
+    "session": 17,
+    "endpoints": 16,
+    "blueprints": 5,
+    "time_initialized": "2026-11-12 17:21:31",
+    "monitoring_0": 0,
+    "monitoring_1": 0,
+    "monitoring_2": 0,
+    "monitoring_3": 16,
+    "dashboard_version": "5.0.2",
+    "python_version": "3.11.9 (main, Dec  9 2024, 00:00:00) [GCC 11.5.0 20240719 (Red Hat 11.5.0-2)]"
   }
 ]
